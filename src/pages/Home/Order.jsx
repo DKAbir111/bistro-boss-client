@@ -7,28 +7,45 @@ import 'swiper/css/pagination';
 // import required modules
 import { Pagination } from 'swiper/modules';
 
+import img1 from '../../assets/home/slide1.jpg'
+import img2 from '../../assets/home/slide2.jpg'
+import img3 from '../../assets/home/slide3.jpg'
+import img4 from '../../assets/home/slide3.jpg'
+import img5 from '../../assets/home/slide5.jpg'
+
 export default function Order() {
     return (
-        <section>
+        <section className="max-w-screen-xl mx-auto">
             <SectionTitle heading={"ORDER ONLINE"} subHeading={"From 11:00am to 10:00pm"} />
             <Swiper
-                slidesPerView={3}
-                spaceBetween={30}
+                slidesPerView={4}
                 pagination={{
                     clickable: true,
                 }}
                 modules={[Pagination]}
                 className="mySwiper"
             >
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-                <SwiperSlide>Slide 7</SwiperSlide>
-                <SwiperSlide>Slide 8</SwiperSlide>
-                <SwiperSlide>Slide 9</SwiperSlide>
+                <SwiperSlide>
+                    <img src={img1} alt="slide1" />
+                    <h3 className="text-3xl font-cinzel relative bottom-12 text-shadow-lg text-white px-5">Salads</h3>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={img2} alt="slide2" />
+                    <h3 className="text-3xl font-cinzel relative bottom-12 text-shadow-lg text-white px-5">Pizzas</h3>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={img3} alt="slide3" />
+                    <h3 className="text-3xl font-cinzel relative bottom-12 text-shadow-lg text-white px-5">Soups</h3>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={img5} alt="slide5" />
+                    <h3 className="text-3xl font-cinzel relative bottom-12 text-shadow-lg text-white px-5">Salads</h3>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={img4} alt="slide4" />
+                    <h3 className="text-3xl font-cinzel relative bottom-12 text-shadow-lg text-white px-5">Soups</h3>
+                </SwiperSlide>
+
             </Swiper>
         </section>
     )
