@@ -1,6 +1,7 @@
 import Banner from "../pages/Home/Banner";
 import CallUs from "../pages/Home/CallUs";
 import Chef from "../pages/Home/Chef";
+import ChefRecom from "../pages/Home/ChefRecom";
 import Menu from "../pages/Home/Menu";
 import Order from "../pages/Home/Order";
 
@@ -12,6 +13,7 @@ export default function HomeLayout() {
             <Chef />
             <Menu />
             <CallUs />
+            <ChefRecom />
         </div>
     )
 }
