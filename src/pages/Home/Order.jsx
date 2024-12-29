@@ -19,6 +19,7 @@ export default function Order() {
             <SectionTitle heading={"ORDER ONLINE"} subHeading={"From 11:00am to 10:00pm"} />
             <Swiper
                 slidesPerView={4}
+                spaceBetween={10}
                 pagination={{
                     clickable: true,
                 }}
@@ -27,23 +28,23 @@ export default function Order() {
             >
                 <SwiperSlide>
                     <img src={img1} alt="slide1" />
-                    <h3 className="text-3xl font-cinzel relative bottom-12 text-shadow-lg text-white px-5">Salads</h3>
+                    <h3 className="md:text-3xl font-cinzel relative bottom-7 md:bottom-12 text-shadow-lg text-white px-5">Salads</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={img2} alt="slide2" />
-                    <h3 className="text-3xl font-cinzel relative bottom-12 text-shadow-lg text-white px-5">Pizzas</h3>
+                    <h3 className="md:text-3xl font-cinzel relative bottom-7 md:bottom-12 text-shadow-lg text-white px-5">Pizzas</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={img3} alt="slide3" />
-                    <h3 className="text-3xl font-cinzel relative bottom-12 text-shadow-lg text-white px-5">Soups</h3>
+                    <h3 className="md:text-3xl font-cinzel relative bottom-7 md:bottom-12 text-shadow-lg text-white px-5">Soups</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={img5} alt="slide5" />
-                    <h3 className="text-3xl font-cinzel relative bottom-12 text-shadow-lg text-white px-5">Salads</h3>
+                    <h3 className="md:text-3xl font-cinzel relative bottom-7 md:bottom-12 text-shadow-lg text-white px-5">Salads</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={img4} alt="slide4" />
-                    <h3 className="text-3xl font-cinzel relative bottom-12 text-shadow-lg text-white px-5">Soups</h3>
+                    <h3 className="md:text-3xl font-cinzel relative bottom-7 md:bottom-12 text-shadow-lg text-white px-5">Soups</h3>
                 </SwiperSlide>
 
             </Swiper>
