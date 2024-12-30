@@ -5,6 +5,7 @@ import ChefRecom from "../pages/Home/ChefRecom";
 import Featured from "../pages/Home/Featured";
 import Menu from "../pages/Home/Menu";
 import Order from "../pages/Home/Order";
+import Testimonials from "../pages/Home/Testimonials";
 
 export default function HomeLayout() {
     return (
@@ -16,6 +17,7 @@ export default function HomeLayout() {
             <CallUs />
             <ChefRecom />
             <Featured />
+            <Testimonials />
         </div>
     )
 }
