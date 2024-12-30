@@ -17,7 +17,7 @@ export default function Testimonials() {
 
 
     return (
-        <section className="max-w-screen-xl mx-auto">
+        <section className="max-w-screen-xl mx-auto my-20">
             <SectionTitle heading={'TESTIMONIALS'} subHeading={'What Our Clients Say'} />
             <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
                 {
