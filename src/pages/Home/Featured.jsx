@@ -3,16 +3,16 @@ import image from '../../assets/home/featured.jpg';
 
 export default function Featured() {
     return (
-        <section className="relative bg-cover bg-center py-20 my-20" style={{ backgroundImage: `url(${image})` }}>
+        <section className="relative bg-fixed bg-cover bg-center py-20 my-20" style={{ backgroundImage: `url(${image})` }}>
             <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
             <div className="relative max-w-screen-xl mx-auto">
                 <SectionTitle heading={"Featured Menu"} subHeading={"Check it Out"} white={true} />
-                <div className="flex gap-20 justify-center items-center">
-                    <div className="w-1/2">
+                <div className="md:flex gap-20 justify-center items-center">
+                    <div className="md:w-1/2">
                         <img src={image} alt="Featured Item" />
                     </div>
-                    <div className="text-white font-inter w-2/5">
+                    <div className="text-white font-inter md:w-2/5 p-3 space-y-2">
                         <p>January 20, 2025</p>
                         <p className="uppercase text-lg">Where can I get Some</p>
                         <p>

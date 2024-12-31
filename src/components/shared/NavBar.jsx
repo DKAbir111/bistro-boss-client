@@ -1,13 +1,14 @@
+import { Link, NavLink } from "react-router-dom"
+
 export default function NavBar() {
 
     const link = <>
-        <li><a className="uppercase">Home</a></li>
-        <li><a className="uppercase">Contact us</a></li>
-        <li><a className="uppercase">Dashboard</a></li>
-        <li><a className="uppercase">Our Menu</a></li>
-        <li><a className="uppercase">Our shop</a></li>
+        <li><NavLink to={'/'} className="uppercase" >Home</NavLink></li>
+        <li><NavLink to={'/dashboard'} className="uppercase">Dashboard</NavLink></li>
+        <li><NavLink to={'/menu'} className="uppercase">Our Menu</NavLink></li>
+        <li><NavLink to={'/contact-us'} className="uppercase">Contact us</NavLink></li>
+        <li><NavLink to={'/shop'} className="uppercase">Our shop</NavLink></li>
         <li><a className="uppercase">Sign Out</a></li>
-
     </>
     return (
         <div className="navbar bg-black text-white bg-opacity-50 px-5 fixed z-10">
@@ -33,10 +34,10 @@ export default function NavBar() {
                         {link}
                     </ul>
                 </div>
-                <div className="font-cinzel">
+                <Link to={'/'} className="font-cinzel">
                     <h3 className="text-xl font-bold">BISTRO BOSS</h3>
                     <p className="tracking-[.25rem]">Restaurant</p>
-                </div>
+                </Link>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 flex-nowrap">

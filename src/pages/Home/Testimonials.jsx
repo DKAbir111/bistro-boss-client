@@ -23,7 +23,7 @@ export default function Testimonials() {
                 {
                     reviews.map(review => <SwiperSlide key={review._id}>
 
-                        <div className="flex flex-col justify-center items-center px-24 gap-7">
+                        <div className="flex flex-col justify-center items-center p-10 md:px-24 gap-7">
                             <ReactStars value={review.rating} size={30} edit={false} />
                             <FaQuoteLeft className="text-6xl" />
                             <p className="text-center text-[#444444]">{review.details}</p>
