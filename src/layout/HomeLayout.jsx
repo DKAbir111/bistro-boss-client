@@ -1,3 +1,4 @@
+import DynamicTitle from "../components/shared/DynamicTitle";
 import Banner from "../pages/Home/Banner";
 import CallUs from "../pages/Home/CallUs";
 import Chef from "../pages/Home/Chef";
@@ -9,7 +10,8 @@ import Testimonials from "../pages/Home/Testimonials";
 
 export default function HomeLayout() {
     return (
-        <div>
+        <>
+            <DynamicTitle title={'Home | BistroBoss'} />
             <Banner />
             <Order />
             <Chef />
@@ -18,6 +20,6 @@ export default function HomeLayout() {
             <ChefRecom />
             <Featured />
             <Testimonials />
-        </div>
+        </>
     )
 }
