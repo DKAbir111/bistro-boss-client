@@ -3,6 +3,7 @@ import banner from '../assets/menu/banner3.jpg'
 import desserts from '../assets/menu/dessert-bg.jpeg'
 import saladImg from '../assets/menu/salad-bg.jpg'
 import pizzaImg from '../assets/menu/pizza-bg.jpg'
+import soupImg from '../assets/menu/soup-bg.jpg'
 import DynamicTitle from "../components/shared/DynamicTitle";
 import SectionTitle from "../components/shared/SectionTitle";
 import { useEffect, useState } from "react";
@@ -19,6 +20,7 @@ export default function MenuLayout() {
     const dessertsMenu = items.filter(item => item.category === "dessert")
     const pizzaMenu = items.filter(item => item.category === "pizza")
     const saladMenu = items.filter(item => item.category === "salad")
+    const soupdMenu = items.filter(item => item.category === "soup")
 
     return (
         <>
@@ -40,9 +42,9 @@ export default function MenuLayout() {
             <Cover image={saladImg} title={'SALADS'} subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} />
             <OurMenu items={saladMenu} />
 
-            {/* Desserts */}
-            <Cover image={banner} title={'OUR MENU'} subTitle={'Would you like to try a dish?'} />
-            <OurMenu items={todaysOffers} />
+            {/* SOUPS */}
+            <Cover image={soupImg} title={'SOUPS'} subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} />
+            <OurMenu items={soupdMenu} />
 
         </>
     )
