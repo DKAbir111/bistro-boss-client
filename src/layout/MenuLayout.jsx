@@ -6,15 +6,11 @@ import pizzaImg from '../assets/menu/pizza-bg.jpg'
 import soupImg from '../assets/menu/soup-bg.jpg'
 import DynamicTitle from "../components/shared/DynamicTitle";
 import SectionTitle from "../components/shared/SectionTitle";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import OurMenu from "../pages/OurMenu/OurMenu";
+import useMenu from "../hooks/useMenu";
 export default function MenuLayout() {
-    const [items, setItems] = useState([])
-    useEffect(() => {
-        axios.get('menu.json')
-            .then(res => setItems(res.data))
-    }, [])
+    // loading data uisng custom hooks
+    const [items] = useMenu()
 
     const todaysOffers = items.filter(item => item.category === "offered")
     const dessertsMenu = items.filter(item => item.category === "dessert")
