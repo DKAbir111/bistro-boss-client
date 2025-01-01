@@ -6,7 +6,7 @@ export default function useMenu() {
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        axios.get('menu.json')
+        axios.get('http://localhost:5001/api/menu')
             .then(res => {
                 setItems(res.data)
                 setLoading(false)

@@ -24,23 +24,23 @@ export default function MenuLayout() {
             <Cover image={banner} title={'OUR MENU'} subTitle={'Would you like to try a dish?'} />
             {/* Todays offer */}
             <SectionTitle heading={"TODAY'S OFFER"} subHeading={"Don't Miss"} />
-            <OurMenu items={todaysOffers} />
+            <OurMenu items={todaysOffers} category={'offered'} />
 
             {/* Desserts */}
             <Cover image={desserts} title={'DESSERTS'} subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} />
-            <OurMenu items={dessertsMenu} />
+            <OurMenu items={dessertsMenu} category={'dessert'} />
 
             {/* PIZZA */}
             <Cover image={pizzaImg} title={'PIZZA'} subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} />
-            <OurMenu items={pizzaMenu} />
+            <OurMenu items={pizzaMenu} category={'pizza'} />
 
             {/* Salads */}
             <Cover image={saladImg} title={'SALADS'} subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} />
-            <OurMenu items={saladMenu} />
+            <OurMenu items={saladMenu} category={'salad'} />
 
             {/* SOUPS */}
             <Cover image={soupImg} title={'SOUPS'} subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} />
-            <OurMenu items={soupdMenu} />
+            <OurMenu items={soupdMenu} category={'soup'} />
 
         </>
     )

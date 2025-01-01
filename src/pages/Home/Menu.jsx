@@ -1,6 +1,7 @@
 import SectionTitle from "../../components/shared/SectionTitle";
 import MenuCard from "../../components/shared/MenuCard";
 import useMenu from "../../hooks/useMenu";
+import { Link } from "react-router-dom";
 
 export default function Menu() {
     const [items] = useMenu()
@@ -11,7 +12,7 @@ export default function Menu() {
             <div className="grid lg:grid-cols-2 gap-10 p-5">
                 {popular.map(item => <MenuCard key={item._id} item={item} />)}
             </div>
-            <button className="mx-auto mt-10 btn btn-outline border-0 border-b-4 bg-base-200 px-10">View Full Menu</button>
+            <Link to={'/menu'}> <button className="mx-auto mt-10 btn btn-outline border-0 border-b-4 bg-base-200 px-10">View Full Menu</button></Link>
         </section>
     )
 }
