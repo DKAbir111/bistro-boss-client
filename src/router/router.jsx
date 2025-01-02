@@ -6,6 +6,7 @@ import HomeLayout from "../layout/HomeLayout";
 import ErrorPage from "../pages/Error/ErrorPage";
 import MenuLayout from "../layout/MenuLayout";
 import ShopLayout from "../layout/ShopLayout";
+import ContactUsLayout from "../layout/ContactUsLayout";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: "/shop/:category",
                 element: <ShopLayout />
+            },
+            {
+                path: "/contact-us",
+                element: <ContactUsLayout />
             }
         ]
     },
