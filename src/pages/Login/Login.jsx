@@ -1,15 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import bgImage from '../../assets/others/authentication.png'
 import authImage from '../../assets/others/authentication2.png'
 import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import DynamicTitle from '../../components/shared/DynamicTitle';
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from '../../Provider/AuthContext';
+import { toast } from 'react-toastify';
 export default function Login() {
-
+    const { loginUser } = useContext(AuthContext)
     const [relode, setRelode] = useState(true)
     const [valid, setValid] = useState(false)
-
+    const navigate = useNavigate()
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, [relode])
@@ -24,6 +26,21 @@ export default function Login() {
             setValid(false)
         }
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const form = e.target
+        const email = form.email.value;
+        const password = form.password.value;
+        loginUser(email, password)
+            .then(res => {
+                if (res?.user?.email) {
+                    navigate('/')
+                    toast.success("Logged in successfully")
+                    form.reset()
+                }
+            }).catch(err => toast.error(err.message))
+    }
     return (
         <div
             className="hero min-h-screen"
@@ -34,22 +51,20 @@ export default function Login() {
             <div className="hero-content mt-20 text-center flex flex-col lg:flex-row max-w-screen-xl mx-auto border py-20 shadow-lg lg:gap-10 font-inter text-black">
 
                 <img src={authImage} alt="" className='md:w-1/2' />
-
-
                 <div className="card-body w-full">
-                    <form >
+                    <form onSubmit={handleSubmit}>
                         <h2 className='text-2xl font-bold'>Login</h2>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered" required />
+                            <input type="email" name='email' placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered" required />
+                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
 
                         </div>
 
@@ -69,7 +84,7 @@ export default function Login() {
                             <button className={`btn bg-[#D1A054B3] hover:bg-[#D1A054] text-white ${valid ? '' : 'btn-disabled'}`}>Sign in</button>
                         </div>
                         <label className="flex justify-center mt-3">
-                            <a href="#" className="text-[#D1A054] text-sm ">New here? <Link to={'/signup'} className='font-bold hover:underline'>Create a New Account</Link></a>
+                            <span className="text-[#D1A054] text-sm ">New here? <Link to={'/signup'} className='font-bold hover:underline'>Create a New Account</Link></span>
                         </label>
                     </form>
                     <div>
