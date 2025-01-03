@@ -31,7 +31,7 @@ export default function ContactForm() {
                         <textarea
                             placeholder="Write your message here"
                             className="textarea textarea-bordered columns-4"
-                            rows="5"
+                            rows="6"
                             required
                         ></textarea>
                     </div>

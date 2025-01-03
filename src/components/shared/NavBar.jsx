@@ -8,7 +8,8 @@ export default function NavBar() {
         <li><NavLink to={'/menu'} className="uppercase">Our Menu</NavLink></li>
         <li><NavLink to={'/contact-us'} className="uppercase">Contact us</NavLink></li>
         <li><NavLink to={'/shop/salad'} className="uppercase">Our shop</NavLink></li>
-        <li><a className="uppercase">Sign Out</a></li>
+        <li><Link to={'/login'} className="uppercase">Login</Link></li>
+        <li><Link to={'/signup'} className="uppercase">Register</Link></li>
     </>
     return (
         <div className="navbar bg-black text-white bg-opacity-50 px-5 fixed z-10">

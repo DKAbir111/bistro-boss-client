@@ -7,6 +7,8 @@ import ErrorPage from "../pages/Error/ErrorPage";
 import MenuLayout from "../layout/MenuLayout";
 import ShopLayout from "../layout/ShopLayout";
 import ContactUsLayout from "../layout/ContactUsLayout";
+import Login from "../pages/Login/Login";
+import SignUp from "../pages/SignUp/SignUp";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
             {
                 path: "/contact-us",
                 element: <ContactUsLayout />
+            },
+            {
+                path: "/login",
+                element: <Login />
+            },
+            {
+                path: "/signup",
+                element: <SignUp />
             }
         ]
     },
