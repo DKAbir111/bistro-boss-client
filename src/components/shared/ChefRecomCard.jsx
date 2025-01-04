@@ -1,4 +1,39 @@
-export default function ChefRecomCard({ title, descrip, image }) {
+import Swal from "sweetalert2"
+import useAuth from "../../hooks/useAuth"
+import { useLocation, useNavigate } from "react-router-dom"
+import useAxiosSecure from "../../hooks/useAxiosSecure"
+
+export default function ChefRecomCard({ title, descrip, image, _id }) {
+    const navigate = useNavigate()
+    const user = useAuth()
+    const axiosSecure = useAxiosSecure()
+    // console.log(user?.email)
+    const location = useLocation()
+    const handleAddtoCart = (id) => {
+        const newItem = {
+            menuId: id,
+            email: user?.email
+        }
+        if (user && user?.email) {
+            axiosSecure.post('/api/add-cart', newItem)
+                .then(res => console.log(res.data))
+        }
+        else {
+            Swal.fire({
+                title: "You are not logged in",
+                text: "Please log in to add the cart!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#D99904",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, Login!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: location.pathname })
+                }
+            });
+        }
+    }
     return (
         <div className="card bg-base-200 shadow-sm rounded-sm">
             <figure>
@@ -12,7 +47,7 @@ export default function ChefRecomCard({ title, descrip, image }) {
                 <h2 className="card-title">{title}</h2>
                 <p className="text-center">{descrip}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-outline border-[#BB8506] hover:text-[#BB8506] text-[#BB8506] px-9 border-0 border-b-4 uppercase bg-base-300">Add to Cart</button>
+                    <button onClick={() => handleAddtoCart(_id)} className="btn btn-outline border-[#BB8506] hover:text-[#BB8506] text-[#BB8506] px-9 border-0 border-b-4 uppercase bg-base-300">Add to Cart</button>
                 </div>
             </div>
         </div>

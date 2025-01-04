@@ -27,6 +27,7 @@ export default function ChefRecom() {
                             image={chef.image}
                             descrip={chef.
                                 recipe}
+                            _id={chef._id}
                         />
                     ))
                 ) : (

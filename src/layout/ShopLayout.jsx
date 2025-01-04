@@ -71,7 +71,7 @@ export default function ShopLayout() {
                 <TabPanel>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {
-                            saladMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} />)
+                            saladMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} _id={item._id} />)
                         }
                     </div>
                 </TabPanel>
