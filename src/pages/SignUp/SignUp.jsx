@@ -2,8 +2,8 @@ import DynamicTitle from "../../components/shared/DynamicTitle";
 import bgImage from "../../assets/others/authentication.png";
 import authImage from "../../assets/others/authentication2.png";
 import { Link, useNavigate } from "react-router-dom";
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { useContext } from "react";
+import { FaEye, FaEyeSlash, FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
+import { useContext, useState } from "react";
 import AuthContext from "../../Provider/AuthContext";
 import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
@@ -22,6 +22,14 @@ export default function SignUp() {
         reset,
     } = useForm();
 
+    // State to handle password visibility
+    const [passwordVisible, setPasswordVisible] = useState(false);
+
+    // Toggle password visibility
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
+    };
+
     const onSubmit = async (data) => {
         const { name, email, photo, password } = data;
         try {
@@ -32,7 +40,7 @@ export default function SignUp() {
                     photoURL: photo,
                 });
                 toast.success("User created successfully");
-                reset(); // Reset form after successful submission
+                reset();
                 navigate("/");
             }
         } catch (err) {
@@ -48,8 +56,8 @@ export default function SignUp() {
             }}
         >
             <DynamicTitle title={"BistroBoss | Sign Up"} />
-            <div className="hero-content mt-20 text-center flex flex-col lg:flex-row max-w-screen-lg mx-auto border py-20 shadow-lg lg:gap-10 font-inter text-black">
-                <div className="card-body w-full">
+            <div className="hero-content mt-20 text-center flex flex-col lg:flex-row md:max-w-screen-lg mx-auto border py-20 shadow-lg lg:gap-10 font-inter text-black">
+                <div className="card-body w-full lg:w-1/2">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <h2 className="text-2xl font-bold">Sign Up</h2>
 
@@ -106,26 +114,44 @@ export default function SignUp() {
                             />
                             {errors.photo && <p className="text-red-500 text-sm">{errors.photo.message}</p>}
                         </div>
-                        {/* password */}
+
+                        {/* Password */}
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                className="input input-bordered"
-                                {...register("password", {
-                                    required: "Password is required",
-                                    pattern: {
-                                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
-                                        message: "Password must be at least 6 characters and include uppercase, lowercase, a number, and a special character.",
-                                    },
-                                })}
-                            />
-                            {errors.password && (
-                                <p className="text-red-500 text-sm">{errors.password.message}</p>
-                            )}
+                            <div className="relative">
+                                <input
+                                    type={passwordVisible ? "text" : "password"}
+                                    placeholder="Password"
+                                    className="input input-bordered w-full"
+                                    {...register("password", {
+                                        required: "Password is required",
+                                        minLength: {
+                                            value: 6,
+                                            message: "Minimum 6 characters.",
+                                        },
+                                        pattern: {
+                                            value: /[A-Z]/,
+                                            message: "At least one uppercase letter.",
+                                        },
+                                        validate: {
+                                            hasNumber: (value) => /\d/.test(value) || "At least one number.",
+                                            hasSpecialChar: (value) => /[$@$!%*?&]/.test(value) || "At least one special character.",
+                                        },
+                                    })}
+                                />
+                                <button
+                                    type="button"
+                                    onClick={togglePasswordVisibility}
+                                    className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                                >
+                                    {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+                                </button>
+                            </div>
+                            <p className="text-red-500 text-sm min-h-[20px]">
+                                {errors.password?.message || ""}
+                            </p>
                         </div>
 
                         {/* Submit Button */}

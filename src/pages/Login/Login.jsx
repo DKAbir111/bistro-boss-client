@@ -48,11 +48,11 @@ export default function Login() {
                 backgroundImage: `url(${bgImage})`,
             }}>
             <DynamicTitle title={'BistroBoss | Login'} />
-            <div className="hero-content mt-20 text-center flex flex-col lg:flex-row max-w-screen-xl mx-auto border py-20 shadow-lg lg:gap-10 font-inter text-black">
+            <div className="hero-content mt-20 text-center flex flex-col lg:flex-row w-screen-xl mx-auto border py-20 shadow-lg lg:gap-10 font-inter text-black">
 
                 <img src={authImage} alt="" className='md:w-1/2' />
-                <div className="card-body w-full">
-                    <form onSubmit={handleSubmit}>
+                <div className="card-body w-full lg:w-1/2">
+                    <form onSubmit={handleSubmit} className='w-full'>
                         <h2 className='text-2xl font-bold'>Login</h2>
                         <div className="form-control">
                             <label className="label">
