@@ -9,6 +9,8 @@ import ShopLayout from "../layout/ShopLayout";
 import ContactUsLayout from "../layout/ContactUsLayout";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
+import DashBoard from "../pages/Dashboard/DashBoard";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +41,10 @@ const router = createBrowserRouter([
             {
                 path: "/signup",
                 element: <SignUp />
+            },
+            {
+                path: "/dashboard",
+                element: <PrivateRoute><DashBoard /></PrivateRoute>
             }
         ]
     },

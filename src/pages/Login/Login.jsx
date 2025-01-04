@@ -4,7 +4,7 @@ import authImage from '../../assets/others/authentication2.png';
 import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import DynamicTitle from '../../components/shared/DynamicTitle';
 import { FaFacebook, FaGithub, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AuthContext from '../../Provider/AuthContext';
 import { toast } from 'react-toastify';
 
@@ -12,9 +12,12 @@ export default function Login() {
     const { loginUser, loginWithGoogle } = useContext(AuthContext);
     const [relode, setRelode] = useState(true);
     const [valid, setValid] = useState(false);
-    const [passwordVisible, setPasswordVisible] = useState(false); // State to toggle password visibility
+    const [passwordVisible, setPasswordVisible] = useState(false);
     const navigate = useNavigate();
 
+    //redirect to desired location
+    const location = useLocation()
+    console.log(location)
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, [relode]);
@@ -37,7 +40,7 @@ export default function Login() {
         loginUser(email, password)
             .then(res => {
                 if (res?.user?.email) {
-                    navigate('/');
+                    navigate(location.state ? location.state : '/');
                     toast.success("Logged in successfully");
                     form.reset();
                 }
@@ -53,7 +56,7 @@ export default function Login() {
         loginWithGoogle()
             .then(res => {
                 if (res?.user?.email) {
-                    navigate('/');
+                    navigate(location.state ? location.state : '/');
                     toast.success("Logged in successfully");
                 }
             }).catch(err => toast.error(err.message));
