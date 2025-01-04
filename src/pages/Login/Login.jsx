@@ -1,45 +1,62 @@
 import { useContext, useEffect, useState } from 'react';
-import bgImage from '../../assets/others/authentication.png'
-import authImage from '../../assets/others/authentication2.png'
+import bgImage from '../../assets/others/authentication.png';
+import authImage from '../../assets/others/authentication2.png';
 import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import DynamicTitle from '../../components/shared/DynamicTitle';
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../../Provider/AuthContext';
 import { toast } from 'react-toastify';
+
 export default function Login() {
-    const { loginUser } = useContext(AuthContext)
-    const [relode, setRelode] = useState(true)
-    const [valid, setValid] = useState(false)
-    const navigate = useNavigate()
+    const { loginUser, loginWithGoogle } = useContext(AuthContext);
+    const [relode, setRelode] = useState(true);
+    const [valid, setValid] = useState(false);
+    const [passwordVisible, setPasswordVisible] = useState(false); // State to toggle password visibility
+    const navigate = useNavigate();
+
     useEffect(() => {
         loadCaptchaEnginge(6);
-    }, [relode])
+    }, [relode]);
 
     const vadidateCaptcha = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const givenInput = e.target.value;
         if (givenInput.length === 6 && validateCaptcha(givenInput)) {
-            setValid(true)
+            setValid(true);
+        } else {
+            setValid(false);
         }
-        else {
-            setValid(false)
-        }
-    }
+    };
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        const form = e.target
+        e.preventDefault();
+        const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         loginUser(email, password)
             .then(res => {
                 if (res?.user?.email) {
-                    navigate('/')
-                    toast.success("Logged in successfully")
-                    form.reset()
+                    navigate('/');
+                    toast.success("Logged in successfully");
+                    form.reset();
                 }
-            }).catch(err => toast.error(err.message))
+            }).catch(err => toast.error(err.message));
+    };
+
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
+    };
+
+
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then(res => {
+                if (res?.user?.email) {
+                    navigate('/');
+                    toast.success("Logged in successfully");
+                }
+            }).catch(err => toast.error(err.message));
     }
     return (
         <div
@@ -49,7 +66,6 @@ export default function Login() {
             }}>
             <DynamicTitle title={'BistroBoss | Login'} />
             <div className="hero-content mt-20 text-center flex flex-col lg:flex-row w-screen-xl mx-auto border py-20 shadow-lg lg:gap-10 font-inter text-black">
-
                 <img src={authImage} alt="" className='md:w-1/2' />
                 <div className="card-body w-full lg:w-1/2">
                     <form onSubmit={handleSubmit} className='w-full'>
@@ -64,8 +80,21 @@ export default function Login() {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
-
+                            <div className="relative">
+                                <input
+                                    type={passwordVisible ? "text" : "password"}
+                                    name='password'
+                                    placeholder="password"
+                                    className="input input-bordered w-full"
+                                    required
+                                />
+                                <span
+                                    onClick={togglePasswordVisibility}
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                                >
+                                    {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+                                </span>
+                            </div>
                         </div>
 
                         {/* captcha */}
@@ -91,7 +120,7 @@ export default function Login() {
                         <label className="label flex justify-center flex-col items-center">
                             <span className="label-text text-[#444444] font-semibold">Or sign in with</span>
                             <div className='flex gap-5 mt-2'>
-                                <span className='btn btn-circle text-lg  btn-outline border-[#444444] hover:bg-[#444444]'> <FaGoogle /> </span>
+                                <span onClick={handleGoogleLogin} className='btn btn-circle text-lg  btn-outline border-[#444444] hover:bg-[#444444]'> <FaGoogle /> </span>
                                 <span className='btn btn-circle text-lg btn-outline border-[#444444] hover:bg-[#444444]'> <FaGithub /></span>
                                 <span className='btn btn-circle text-lg btn-outline border-[#444444] hover:bg-[#444444]'> <FaFacebook /></span>
                             </div>
@@ -100,6 +129,5 @@ export default function Login() {
                 </div>
             </div>
         </div>
-
-    )
+    );
 }

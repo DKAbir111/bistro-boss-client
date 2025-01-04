@@ -11,7 +11,7 @@ import auth from "../../Firebase/firebase.init";
 import { useForm } from "react-hook-form";
 
 export default function SignUp() {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, loginWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
 
     // React Hook Form setup
@@ -47,7 +47,16 @@ export default function SignUp() {
             toast.error(err.message);
         }
     };
-
+    //login with google
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then(res => {
+                if (res?.user?.email) {
+                    navigate('/');
+                    toast.success("Logged in successfully");
+                }
+            }).catch(err => toast.error(err.message));
+    }
     return (
         <div
             className="hero min-h-screen"
@@ -173,7 +182,7 @@ export default function SignUp() {
                         <label className="label flex justify-center flex-col items-center">
                             <span className="label-text text-[#444444] font-semibold">Or sign up with</span>
                             <div className="flex gap-5 mt-2">
-                                <span className="btn btn-circle text-lg btn-outline border-[#444444] hover:bg-[#444444]">
+                                <span onClick={handleGoogleLogin} className="btn btn-circle text-lg btn-outline border-[#444444] hover:bg-[#444444]">
                                     <FaGoogle />
                                 </span>
                                 <span className="btn btn-circle text-lg btn-outline border-[#444444] hover:bg-[#444444]">
