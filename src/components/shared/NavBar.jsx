@@ -1,18 +1,19 @@
 import { useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
 import AuthContext from "../../Provider/AuthContext"
-
+import { IoCartSharp } from "react-icons/io5";
 export default function NavBar() {
     const { user, logoutUser } = useContext(AuthContext)
     const link = <>
         <li><NavLink to={'/'} className="uppercase" >Home</NavLink></li>
-        <li><NavLink to={'/dashboard'} className="uppercase">Dashboard</NavLink></li>
+        {user?.email && <li><NavLink to={'/dashboard'} className="uppercase">Dashboard</NavLink></li>}
         <li><NavLink to={'/menu'} className="uppercase">Our Menu</NavLink></li>
         <li><NavLink to={'/contact-us'} className="uppercase">Contact us</NavLink></li>
         <li><NavLink to={'/shop/salad'} className="uppercase">Our shop</NavLink></li>
         {
             user?.email ? <>
-                <button className="btn btn-sm uppercase" onClick={logoutUser}>Sign Out</button>
+                <li><span className=" btn btn-sm btn-circle mr-4 text-lg bg-green-700 border-none text-white hover:bg-green-700 relative"><IoCartSharp /> <span className="absolute bg-red-600 rounded-full text-sm h-5 w-5 -top-2 -right-2">{0}</span> </span></li>
+                <li> <button className="btn btn-sm uppercase" onClick={logoutUser}>Sign Out</button></li>
             </> :
                 <>
                     <li><Link to={'/login'} className="uppercase">Login</Link></li>

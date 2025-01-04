@@ -17,7 +17,7 @@ export default function Login() {
 
     //redirect to desired location
     const location = useLocation()
-    console.log(location)
+    // console.log(location)
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, [relode]);
