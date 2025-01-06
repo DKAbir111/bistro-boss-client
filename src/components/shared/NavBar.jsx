@@ -2,8 +2,11 @@ import { useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
 import AuthContext from "../../Provider/AuthContext"
 import { IoCartSharp } from "react-icons/io5";
+import useCart from "../../hooks/useCart";
 export default function NavBar() {
     const { user, logoutUser } = useContext(AuthContext)
+    const [cartItem] = useCart()
+    console.log(cartItem)
     const link = <>
         <li><NavLink to={'/'} className="uppercase" >Home</NavLink></li>
         {user?.email && <li><NavLink to={'/dashboard'} className="uppercase">Dashboard</NavLink></li>}
@@ -12,7 +15,7 @@ export default function NavBar() {
         <li><NavLink to={'/shop/salad'} className="uppercase">Our shop</NavLink></li>
         {
             user?.email ? <>
-                <li><span className=" btn btn-sm btn-circle mr-4 text-lg bg-green-700 border-none text-white hover:bg-green-700 relative"><IoCartSharp /> <span className="absolute bg-red-600 rounded-full text-sm h-5 w-5 -top-2 -right-2">{0}</span> </span></li>
+                <li><span className=" btn btn-sm btn-circle mr-4 text-lg bg-green-700 border-none text-white hover:bg-green-700 relative"><IoCartSharp /> <span className="absolute bg-red-600 rounded-full text-sm h-5 w-5 -top-2 -right-2">{cartItem.length}</span> </span></li>
                 <li> <button className="btn btn-sm uppercase" onClick={logoutUser}>Sign Out</button></li>
             </> :
                 <>
