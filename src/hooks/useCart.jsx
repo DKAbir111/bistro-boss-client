@@ -9,7 +9,7 @@ export default function useCart() {
     const { data: cart = [], refetch } = useQuery({
         queryKey: ['cart', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`http://localhost:5001/api/cart?email=${user?.email}`)
+            const res = await axiosSecure.get(`https://bistro-boss-server-phi-two.vercel.app/api/cart?email=${user?.email}`)
             return res.data
         }
     })
