@@ -2,6 +2,7 @@ import Swal from "sweetalert2"
 import useAuth from "../../hooks/useAuth"
 import { useLocation, useNavigate } from "react-router-dom"
 import useAxiosSecure from "../../hooks/useAxiosSecure"
+import { toast } from "react-toastify"
 
 export default function ChefRecomCard({ title, descrip, image, _id }) {
     const navigate = useNavigate()
@@ -16,7 +17,15 @@ export default function ChefRecomCard({ title, descrip, image, _id }) {
         }
         if (user && user?.email) {
             axiosSecure.post('/api/add-cart', newItem)
-                .then(res => console.log(res.data))
+                .then(res => {
+                    if (res.data.insertedId) {
+                        toast.success('Item  successfully added to cart')
+                    }
+                })
+                .catch(err => {
+                    toast.error('Failed to add item to cart')
+                    console.error(err)
+                })
         }
         else {
             Swal.fire({
