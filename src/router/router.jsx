@@ -1,6 +1,4 @@
-import {
-    createBrowserRouter,
-} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import HomeLayout from "../layout/HomeLayout";
 import ErrorPage from "../pages/Error/ErrorPage";
@@ -11,6 +9,11 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashBoard from "../pages/Dashboard/DashBoard";
+import Home from "../pages/Dashboard/Home";
+import AddItem from "../pages/Dashboard/AddItem";
+import ManageItem from "../pages/Dashboard/ManageItem";
+import AllUser from "../pages/Dashboard/AllUser";
+import ManageBookings from "../pages/Dashboard/ManageBookings";
 
 const router = createBrowserRouter([
     {
@@ -20,33 +23,55 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <HomeLayout />
+                element: <HomeLayout />,
             },
             {
                 path: "/menu",
-                element: <MenuLayout />
+                element: <MenuLayout />,
             },
             {
                 path: "/shop/:category",
-                element: <ShopLayout />
+                element: <ShopLayout />,
             },
             {
                 path: "/contact-us",
-                element: <ContactUsLayout />
+                element: <ContactUsLayout />,
             },
             {
                 path: "/login",
-                element: <Login />
+                element: <Login />,
             },
             {
                 path: "/signup",
-                element: <SignUp />
+                element: <SignUp />,
             },
+        ],
+    },
+    {
+        path: "/dashboard",
+        element: <PrivateRoute><DashBoard /></PrivateRoute>,
+        children: [
             {
                 path: "/dashboard",
-                element: <PrivateRoute><DashBoard /></PrivateRoute>
-            }
-        ]
+                element: <Home />,
+            },
+            {
+                path: "add-item",
+                element: <AddItem />,
+            },
+            {
+                path: "manage-item",
+                element: <ManageItem />,
+            },
+            {
+                path: "users",
+                element: <AllUser />,
+            },
+            {
+                path: "manage-bookings",
+                element: <ManageBookings />,
+            },
+        ],
     },
 ]);
 
