@@ -10,10 +10,11 @@ import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashBoard from "../pages/Dashboard/DashBoard";
 import Home from "../pages/Dashboard/Home";
-import AddItem from "../pages/Dashboard/AddItem";
-import ManageItem from "../pages/Dashboard/ManageItem";
-import AllUser from "../pages/Dashboard/AllUser";
-import ManageBookings from "../pages/Dashboard/ManageBookings";
+import Reservation from "../pages/Dashboard/Reservation";
+import Payment from "../pages/Dashboard/Payment";
+import MyCart from "../pages/Dashboard/MyCart";
+import AddReview from "../pages/Dashboard/AddReview";
+import MyBooking from "../pages/Dashboard/MyBooking";
 
 const router = createBrowserRouter([
     {
@@ -56,21 +57,25 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: "add-item",
-                element: <AddItem />,
+                path: "reservation",
+                element: <Reservation />,
             },
             {
-                path: "manage-item",
-                element: <ManageItem />,
+                path: "payment",
+                element: <Payment />,
             },
             {
-                path: "users",
-                element: <AllUser />,
+                path: "my-cart",
+                element: <MyCart />
             },
             {
-                path: "manage-bookings",
-                element: <ManageBookings />,
+                path: "add-review",
+                element: <AddReview />,
             },
+            {
+                path: "booking",
+                element: <MyBooking />,
+            }
         ],
     },
 ]);
