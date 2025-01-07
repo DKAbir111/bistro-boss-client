@@ -18,7 +18,7 @@ Bistro Boss is a comprehensive restaurant management website built using the MER
 ## Live Links
 
 - **Live Website**: [Bistro Boss Website](https://bistroboss-c5b6e.web.app/)
-- **Live Server**: [Bistro Boss Server](https://bistro-boss-server-phi-two.vercel.app/)
+- **Live Server**: [Bistro Boss Server](http://localhost:5001/)
 
 ## Landing Page Structure
 
