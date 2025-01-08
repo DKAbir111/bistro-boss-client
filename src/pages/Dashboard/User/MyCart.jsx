@@ -1,9 +1,9 @@
 import { RiDeleteBin6Line } from "react-icons/ri";
-import SectionTitle from "../../components/shared/SectionTitle";
-import useCart from "../../hooks/useCart";
+import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import SectionTitle from "../../../components/shared/SectionTitle";
 
 export default function MyCart() {
     const [cart, refetch] = useCart()

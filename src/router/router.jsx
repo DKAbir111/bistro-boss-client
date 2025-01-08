@@ -9,12 +9,14 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashBoard from "../pages/Dashboard/DashBoard";
-import Home from "../pages/Dashboard/Home";
-import Reservation from "../pages/Dashboard/Reservation";
-import Payment from "../pages/Dashboard/Payment";
-import MyCart from "../pages/Dashboard/MyCart";
-import AddReview from "../pages/Dashboard/AddReview";
-import MyBooking from "../pages/Dashboard/MyBooking";
+
+import Reservation from "../pages/Dashboard/User/Reservation";
+import Payment from "../pages/Dashboard/User/Payment";
+import MyCart from "../pages/Dashboard/User/MyCart";
+import AddReview from "../pages/Dashboard/User/AddReview";
+import MyBooking from "../pages/Dashboard/User/MyBooking";
+import Home from "../pages/Dashboard/User/Home";
+import AllUser from "../pages/Dashboard/Admin/AllUser";
 
 const router = createBrowserRouter([
     {
@@ -52,9 +54,11 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <PrivateRoute><DashBoard /></PrivateRoute>,
         children: [
+
+            // user route
             {
                 path: "/dashboard",
-                element: <Home />,
+                element: <Home />
             },
             {
                 path: "reservation",
@@ -75,7 +79,30 @@ const router = createBrowserRouter([
             {
                 path: "booking",
                 element: <MyBooking />,
-            }
+            },
+
+            // admin route
+            {
+                path: "admin",
+                element: <MyBooking />,
+            },
+            {
+                path: "manage-booking",
+                element: <MyBooking />,
+            },
+            {
+                path: "add-item",
+                element: <MyBooking />,
+            },
+            {
+                path: "all-user",
+                element: <AllUser />,
+            },
+            {
+                path: "manage-item",
+                element: <MyBooking />,
+            },
+
         ],
     },
 ]);

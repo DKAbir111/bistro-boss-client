@@ -7,8 +7,10 @@ import { FaFacebook, FaGithub, FaGoogle, FaEye, FaEyeSlash } from "react-icons/f
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AuthContext from '../../Provider/AuthContext';
 import { toast } from 'react-toastify';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 export default function Login() {
+    const axiosPublic = useAxiosPublic()
     const { loginUser, loginWithGoogle } = useContext(AuthContext);
     const [relode, setRelode] = useState(true);
     const [valid, setValid] = useState(false);
@@ -56,6 +58,8 @@ export default function Login() {
         loginWithGoogle()
             .then(res => {
                 if (res?.user?.email) {
+                    const newUser = { email: res.user?.email, name: res.user?.displayName }
+                    axiosPublic.post('/api/user', newUser)
                     navigate(location.state ? location.state : '/');
                     toast.success("Logged in successfully");
                 }

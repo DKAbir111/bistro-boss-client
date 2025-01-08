@@ -50,6 +50,7 @@ export default function SignUp() {
             toast.error(err.message);
         }
     };
+
     //login with google
     const handleGoogleLogin = () => {
         loginWithGoogle()
@@ -57,7 +58,6 @@ export default function SignUp() {
                 if (res.user?.email) {
                     const newUser = { email: res.user?.email, name: res.user?.displayName }
                     axiosPublic.post('/api/user', newUser)
-                        .then(res => console.log(res.data))
                     navigate('/');
                     toast.success("Logged in successfully");
                 }
