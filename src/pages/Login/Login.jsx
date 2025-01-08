@@ -63,12 +63,12 @@ export default function Login() {
     }
     return (
         <div
-            className="hero min-h-screen"
+            className="hero min-h-screen py-20"
             style={{
                 backgroundImage: `url(${bgImage})`,
             }}>
             <DynamicTitle title={'BistroBoss | Login'} />
-            <div className="hero-content mt-20 text-center flex flex-col lg:flex-row w-screen-xl mx-auto border py-20 shadow-lg lg:gap-10 font-inter text-black">
+            <div className="hero-content text-center flex flex-col lg:flex-row w-screen-xl mx-auto border shadow-lg lg:gap-10 font-inter text-black">
                 <img src={authImage} alt="" className='md:w-1/2' />
                 <div className="card-body w-full lg:w-1/2">
                     <form onSubmit={handleSubmit} className='w-full'>
@@ -116,7 +116,7 @@ export default function Login() {
                             <button className={`btn bg-[#D1A054B3] hover:bg-[#D1A054] text-white ${valid ? '' : 'btn-disabled'}`}>Sign in</button>
                         </div>
                         <label className="flex justify-center mt-3">
-                            <span className="text-[#D1A054] text-sm ">New here? <Link to={'/signup'} className='font-bold hover:underline'>Create a New Account</Link></span>
+                            <span className=" text-sm ">New here? <Link to={'/signup'} className='font-bold hover:underline text-[#D1A054]'>Create a New Account</Link></span>
                         </label>
                     </form>
                     <div>

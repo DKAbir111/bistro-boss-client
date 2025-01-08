@@ -6,7 +6,6 @@ import useCart from "../../hooks/useCart";
 export default function NavBar() {
     const { user, logoutUser } = useContext(AuthContext)
     const [cartItem] = useCart()
-    console.log(cartItem)
     const link = <>
         <li><NavLink to={'/'} className="uppercase" >Home</NavLink></li>
         {user?.email && <li><NavLink to={'/dashboard'} className="uppercase">Dashboard</NavLink></li>}

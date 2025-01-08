@@ -44,7 +44,7 @@ export default function ShopLayout() {
                 <TabPanel>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {
-                            todaysOffers?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} />)
+                            todaysOffers?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} _id={item._id} />)
                         }
                     </div>
                 </TabPanel>
@@ -53,7 +53,7 @@ export default function ShopLayout() {
                 <TabPanel>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {
-                            dessertsMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} />)
+                            dessertsMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} _id={item._id} />)
                         }
                     </div>
                 </TabPanel>
@@ -62,7 +62,7 @@ export default function ShopLayout() {
                 <TabPanel>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {
-                            pizzaMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} />)
+                            pizzaMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} _id={item._id} />)
                         }
                     </div>
                 </TabPanel>
@@ -80,7 +80,7 @@ export default function ShopLayout() {
                 <TabPanel>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {
-                            soupMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} />)
+                            soupMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} _id={item._id} />)
                         }
                     </div>
                 </TabPanel>
@@ -89,7 +89,7 @@ export default function ShopLayout() {
                 <TabPanel>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {
-                            popularMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} />)
+                            popularMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} _id={item._id} />)
                         }
                     </div>
                 </TabPanel>
@@ -97,7 +97,7 @@ export default function ShopLayout() {
                 <TabPanel>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {
-                            drinksMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} />)
+                            drinksMenu?.map(item => <ChefRecomCard key={item._id} title={item.name} image={item.image} descrip={item.recipe} _id={item._id} />)
                         }
                     </div>
                 </TabPanel>

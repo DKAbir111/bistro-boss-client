@@ -9,11 +9,12 @@ import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import auth from "../../Firebase/firebase.init";
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 export default function SignUp() {
     const { createUser, loginWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
-
+    const axiosPublic = useAxiosPublic()
     // React Hook Form setup
     const {
         register,
@@ -32,6 +33,7 @@ export default function SignUp() {
 
     const onSubmit = async (data) => {
         const { name, email, photo, password } = data;
+        const newUser = { name, email }
         try {
             const res = await createUser(email, password);
             if (res?.user?.email) {
@@ -39,6 +41,7 @@ export default function SignUp() {
                     displayName: name,
                     photoURL: photo,
                 });
+                axiosPublic.post('/api/user', newUser)
                 toast.success("User created successfully");
                 reset();
                 navigate("/");
@@ -51,7 +54,10 @@ export default function SignUp() {
     const handleGoogleLogin = () => {
         loginWithGoogle()
             .then(res => {
-                if (res?.user?.email) {
+                if (res.user?.email) {
+                    const newUser = { email: res.user?.email, name: res.user?.displayName }
+                    axiosPublic.post('/api/user', newUser)
+                        .then(res => console.log(res.data))
                     navigate('/');
                     toast.success("Logged in successfully");
                 }
@@ -59,17 +65,16 @@ export default function SignUp() {
     }
     return (
         <div
-            className="hero min-h-screen"
+            className="hero min-h-screen py-20"
             style={{
                 backgroundImage: `url(${bgImage})`,
             }}
         >
             <DynamicTitle title={"BistroBoss | Sign Up"} />
-            <div className="hero-content mt-20 text-center flex flex-col lg:flex-row md:max-w-screen-lg mx-auto border py-20 shadow-lg lg:gap-10 font-inter text-black">
+            <div className="hero-content text-center flex flex-col lg:flex-row md:max-w-screen-lg mx-auto border shadow-lg lg:gap-10 font-inter text-black">
                 <div className="card-body w-full lg:w-1/2">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <h2 className="text-2xl font-bold">Sign Up</h2>
-
                         {/* Name */}
                         <div className="form-control">
                             <label className="label">
@@ -170,9 +175,9 @@ export default function SignUp() {
                             </button>
                         </div>
                         <label className="flex justify-center mt-3">
-                            <span className="text-[#D1A054] text-sm">
+                            <span className=" text-sm">
                                 Already registered?{" "}
-                                <Link to={"/login"} className="font-bold hover:underline">
+                                <Link to={"/login"} className="font-bold hover:underline text-[#D1A054]">
                                     Go to log in
                                 </Link>
                             </span>

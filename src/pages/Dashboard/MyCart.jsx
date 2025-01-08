@@ -1,17 +1,49 @@
 import { RiDeleteBin6Line } from "react-icons/ri";
 import SectionTitle from "../../components/shared/SectionTitle";
 import useCart from "../../hooks/useCart";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 export default function MyCart() {
-    const [cart] = useCart()
+    const [cart, refetch] = useCart()
+    const axiosSecure = useAxiosSecure()
     const subTotal = cart.reduce((total, sum) => total + sum.price, 0)
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#D1A054",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/api/cart/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount === 1) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your item has been deleted.",
+                                icon: "success"
+                            });
+                            refetch();
+                        }
+                    })
+                    .catch(err => toast.error(err.message))
+
+            }
+        });
+    }
+    console.log(cart)
     return (
         <section>
             <SectionTitle heading={'WANNA ADD MORE?'} subHeading={'My Cart'} />
             <div className="max-w-screen-lg bg-white p-10 mx-auto">
                 <header className="font-cinzel flex items-center justify-between">
                     <h3 className="text-2xl font-semibold">Total Orders: {cart.length} </h3>
-                    <h3 className="text-2xl font-semibold"> Total Price: ${subTotal}</h3>
+                    <h3 className="text-2xl font-semibold"> Total Price: ${subTotal.toFixed(2)}</h3>
                     <button className="btn text-lg bg-[#D1A054] text-white">Pay</button>
                 </header>
 
@@ -32,7 +64,7 @@ export default function MyCart() {
                         </thead>
                         <tbody>
                             {
-                                cart.map((item, index) => <tr key={item._id}>
+                                cart.map((item, index) => <tr key={item.cartId}>
                                     <th>
                                         <label>
                                             {index + 1}
@@ -54,7 +86,7 @@ export default function MyCart() {
                                     </td>
                                     <td>{item.price}</td>
                                     <th>
-                                        <button className="btn btn-error  text-white bg-red-600 text-xl rounded-md"><RiDeleteBin6Line /> </button>
+                                        <button onClick={() => handleDelete(item.cartId)} className="btn btn-error  text-white bg-red-600 text-xl rounded-md"><RiDeleteBin6Line /> </button>
                                     </th>
                                 </tr>)
                             }

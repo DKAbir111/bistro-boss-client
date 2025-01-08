@@ -17,6 +17,7 @@ export default function ChefRecomCard({ title, descrip, image, _id }) {
             menuId: id,
             email: user?.email
         }
+        // console.log(newItem)
         if (user && user?.email) {
             axiosSecure.post('/api/add-cart', newItem)
                 .then(res => {

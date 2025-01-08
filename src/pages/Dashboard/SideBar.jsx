@@ -51,7 +51,7 @@ export default function SideBar() {
                     <li><NavLink to={'/menu'} className={({ isActive }) =>
                         isActive ? "text-white" : "text-black"
                     }><FaList /> Menu</NavLink></li>
-                    <li><NavLink to={'/shop'} className={({ isActive }) =>
+                    <li><NavLink to={'/shop/salad'} className={({ isActive }) =>
                         isActive ? "text-white" : "text-black"
                     }><FaShop />Shop</NavLink></li>
 
