@@ -14,7 +14,7 @@ export default function AuthProvider({ children }) {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
             if (currentUser) {
-                const userInfo = { email: currentUser.email }
+                const userInfo = { email: currentUser?.email }
                 axiosPublic.post('/api/jwt', userInfo)
                     .then(res => localStorage.setItem('access-token', res.data))
             }

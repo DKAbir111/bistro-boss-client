@@ -17,6 +17,7 @@ import AddReview from "../pages/Dashboard/User/AddReview";
 import MyBooking from "../pages/Dashboard/User/MyBooking";
 import Home from "../pages/Dashboard/User/Home";
 import AllUser from "../pages/Dashboard/Admin/AllUser";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -84,7 +85,7 @@ const router = createBrowserRouter([
             // admin route
             {
                 path: "admin",
-                element: <MyBooking />,
+                element: <MyBooking />
             },
             {
                 path: "manage-booking",
@@ -96,7 +97,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "all-user",
-                element: <AllUser />,
+                element: <AdminRoute><AllUser /></AdminRoute>,
             },
             {
                 path: "manage-item",
