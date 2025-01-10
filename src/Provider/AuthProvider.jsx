@@ -2,21 +2,32 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { useEffect, useState } from 'react'
 import auth from '../Firebase/firebase.init'
 import AuthContext from './AuthContext'
+import useAxiosPublic from '../hooks/useAxiosPublic'
 
 export default function AuthProvider({ children }) {
 
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-
+    const axiosPublic = useAxiosPublic()
     //monitoring state
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
+            if (currentUser) {
+                const userInfo = { email: currentUser.email }
+                axiosPublic.post('/api/jwt', userInfo)
+                    .then(res => localStorage.setItem('access-token', res.data))
+            }
+            else {
+                localStorage.removeItem('access-token')
+            }
             setLoading(false)
         })
 
+
+
         return () => unsubscribe()
-    }, [])
+    }, [axiosPublic])
 
     //create user
     const createUser = (email, password) => {

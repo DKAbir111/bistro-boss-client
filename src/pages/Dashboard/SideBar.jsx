@@ -3,12 +3,15 @@ import { FaBook, FaEnvelope, FaHome, FaList, FaOpencart, FaStar, FaUsers } from 
 import { ImSpoonKnife } from "react-icons/im";
 import { FaShop } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa";
+import useAdmin from "../../hooks/useAdmin";
+
 
 export default function SideBar() {
 
 
-    // Todo: Must fetch from data base
-    const isAdmin = true;
+    const [isAdmin] = useAdmin()
+
+
     return (
         <div className="drawer lg:drawer-open ">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -49,10 +52,7 @@ export default function SideBar() {
                             <>
 
                                 {/* user routes */}
-                                <Link to={'/dashboard'} className="font-cinzel mb-10">
-                                    <h3 className="text-2xl font-bold">BISTRO BOSS</h3>
-                                    <p className="tracking-[.5rem] font-semibold">Restaurant</p>
-                                </Link>
+
                                 <li><NavLink to={'/dashboard'} className={({ isActive }) =>
                                     isActive ? "text-white" : "text-black"
                                 }><FaHome /> User Home</NavLink></li>

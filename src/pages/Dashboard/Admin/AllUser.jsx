@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaUserCheck } from "react-icons/fa";
 import Swal from "sweetalert2";
 
+
 export default function AllUser() {
     const axiosSecure = useAxiosSecure()
     const { data: users = [], refetch } = useQuery({
@@ -14,6 +15,8 @@ export default function AllUser() {
             return res.data
         }
     })
+
+
     const handleDelete = (id, name) => {
         Swal.fire({
             title: `Are you sure you want to delete ${name}`,
