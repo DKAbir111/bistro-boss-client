@@ -14,7 +14,7 @@ export default function AdminRoute({ children }) {
     }
     return (
 
-        <Navigate to={'/login'} state={location.pathname} replace>
+        <Navigate to={'/'} state={location.pathname} replace>
 
         </Navigate>
 

@@ -73,7 +73,7 @@ export default function AllUser() {
 
     }
     return (
-        <section>
+        <section className="bg-base-200 min-h-screen">
             <SectionTitle heading={'MANAGE ALL USERS'} subHeading={'How Many?'} />
             <div className="max-w-screen-lg bg-white p-10 mx-auto">
                 <header className="font-cinzel flex items-center justify-between">

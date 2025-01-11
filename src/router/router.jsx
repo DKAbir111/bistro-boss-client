@@ -18,6 +18,7 @@ import MyBooking from "../pages/Dashboard/User/MyBooking";
 import Home from "../pages/Dashboard/User/Home";
 import AllUser from "../pages/Dashboard/Admin/AllUser";
 import AdminRoute from "./AdminRoute";
+import AddItem from "../pages/Dashboard/Admin/AddItem";
 
 const router = createBrowserRouter([
     {
@@ -93,7 +94,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "add-item",
-                element: <MyBooking />,
+                element: <AddItem />,
             },
             {
                 path: "all-user",

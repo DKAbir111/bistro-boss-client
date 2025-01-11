@@ -7,7 +7,7 @@ export default function DashBoard() {
             <section className="h-screen" >
                 <SideBar />
             </section>
-            <section className="bg-base-200 flex-1 overflow-y-auto h-screen">
+            <section className=" flex-1 overflow-y-auto h-screen">
                 <Outlet />
             </section>
         </main>
