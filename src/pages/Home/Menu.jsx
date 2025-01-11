@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Menu() {
     const [items] = useMenu()
+
     const popular = items.filter(item => item.category === "popular")
     return (
         <section className="max-w-screen-xl mx-auto flex justify-center items-center flex-col my-10">

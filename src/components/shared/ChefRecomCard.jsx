@@ -8,7 +8,7 @@ import useCart from "../../hooks/useCart"
 export default function ChefRecomCard({ title, descrip, image, _id }) {
     const navigate = useNavigate()
     const { user } = useAuth()
-    const [, fetch] = useCart()
+    const [, refetch] = useCart()
     const axiosSecure = useAxiosSecure()
     // console.log(user?.email)
     const location = useLocation()
@@ -22,10 +22,9 @@ export default function ChefRecomCard({ title, descrip, image, _id }) {
             axiosSecure.post('/api/add-cart', newItem)
                 .then(res => {
                     if (res.data.insertedId) {
-                        fetch()  // refresh the cart after adding an item
                         toast.success('Item  successfully added to cart')
+                        refetch()
                     }
-
                 })
                 .catch(err => {
                     toast.error('Failed to add item to cart')

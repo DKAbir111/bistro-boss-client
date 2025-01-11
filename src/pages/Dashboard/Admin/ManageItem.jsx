@@ -2,15 +2,42 @@ import { FaRegEdit } from "react-icons/fa";
 import SectionTitle from "../../../components/shared/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 
 export default function ManageItem() {
-    const [items] = useMenu()
-    const handleAddAdmin = () => {
-
+    const [items, loading, refetch] = useMenu()
+    const axiosSecure = useAxiosSecure()
+    if (loading) {
+        <div>Loading...</div>
     }
-    const handleDelete = () => {
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d0a054",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/api/menu/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount === 1) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your item has been deleted.",
+                                icon: "success"
+                            });
+                            refetch()
+                        }
+                    })
+            }
+        });
 
     }
     return (
@@ -23,7 +50,6 @@ export default function ManageItem() {
                     {/* Todo filter by category */}
 
                 </header>
-
                 {/* table */}
 
                 <div className="overflow-x-auto mt-7 rounded-t-lg">
@@ -42,7 +68,7 @@ export default function ManageItem() {
                         </thead>
                         <tbody>
                             {
-                                items.map((item, index) => <tr key={item.cartId}>
+                                items.map((item, index) => <tr key={item._id}>
                                     <th>
                                         <label>
                                             {index + 1}
@@ -67,7 +93,7 @@ export default function ManageItem() {
                                         <button onClick={() => handleDelete(item.cartId)} className="btn   text-white border-none hover:bg-[#c9a56b] bg-[#D0A054] text-xl rounded-md"><FaRegEdit /> </button>
                                     </th>
                                     <th>
-                                        <button onClick={() => handleDelete(item.cartId)} className="btn btn-error border-none  text-white bg-red-600 text-xl rounded-md"><RiDeleteBin6Line /> </button>
+                                        <button onClick={() => handleDelete(item._id)} className="btn btn-error border-none  text-white bg-red-600 text-xl rounded-md"><RiDeleteBin6Line /> </button>
                                     </th>
                                 </tr>)
                             }

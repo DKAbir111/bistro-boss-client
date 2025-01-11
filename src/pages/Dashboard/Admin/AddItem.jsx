@@ -6,7 +6,9 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
+
 export default function AddItem() {
+
     const {
         register,
         handleSubmit,
