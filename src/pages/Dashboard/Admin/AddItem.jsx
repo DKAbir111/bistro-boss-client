@@ -1,18 +1,61 @@
 import { ImSpoonKnife } from "react-icons/im";
 import SectionTitle from "../../../components/shared/SectionTitle";
 import { useForm } from "react-hook-form"
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 export default function AddItem() {
     const {
         register,
         handleSubmit,
+        reset,
+
         // watch,
         formState: { errors },
     } = useForm()
-
+    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     // submit function
+    const key = import.meta.env.VITE_IMAGE_UPLOAD_API_KEY
+    const imageApi = `https://api.imgbb.com/1/upload?key=${key}`
+    const onSubmit = async (data) => {
 
-    const onSubmit = (data) => console.log(data)
+        const imageFile = { image: data.image[0] }
+        const res = await axiosPublic.post(imageApi, imageFile, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+        });
+
+
+        if (res.data.success) {
+            const newItem = {
+                ...data,
+                image: res.data.data.display_url,
+                price: parseFloat(data.price)
+            }
+            axiosSecure.post('/api/menu', newItem)
+                .then(res => {
+                    if (res.data.
+                        insertedId) {
+                        Swal.fire({
+                            position: "top-end",
+                            color: "#D1A054",
+                            icon: "success",
+                            title: "Item added successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        reset()
+                    }
+                    else {
+                        toast.error('Failed to add item')
+                        console.log(res.data)
+                    }
+
+                })
+        }
+    }
     // console.log(watch("name"))
 
     return (
@@ -34,8 +77,8 @@ export default function AddItem() {
                         <div className="label">
                             <span className="label-text">Category*</span>
                         </div>
-                        <select className="select select-bordered" {...register("category", { required: true })}>
-                            <option disabled selected>Category</option>
+                        <select defaultValue={'category'} className="select select-bordered" {...register("category", { required: true })}>
+                            <option disabled value={'category'}>Category</option>
                             <option value={'pizza'}>Pizza</option>
                             <option value={'salad'}>Salad</option>
                             <option value={'soup'}>Soups</option>
@@ -50,7 +93,7 @@ export default function AddItem() {
                         <label className="label">
                             <span className="label-text">Price*</span>
                         </label>
-                        <input type="number" {...register("price", { required: true })} placeholder="Price" className="input input-bordered" required />
+                        <input type="text" {...register("price", { required: true })} placeholder="Price" className="input input-bordered" required />
                         {errors.price && <span className="text-sm text-red-500 mt-1">This field is required</span>}
                     </div>
 
@@ -61,7 +104,7 @@ export default function AddItem() {
                             <span className="label-text">Recipe Details*</span>
                         </label>
                         <textarea
-                            {...register("details", { required: true })}
+                            {...register("recipe", { required: true })}
                             placeholder="Recipe Details"
                             className="textarea textarea-bordered columns-4"
                             rows="6"

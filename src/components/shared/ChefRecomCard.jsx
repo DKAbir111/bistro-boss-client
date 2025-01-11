@@ -7,7 +7,7 @@ import useCart from "../../hooks/useCart"
 
 export default function ChefRecomCard({ title, descrip, image, _id }) {
     const navigate = useNavigate()
-    const user = useAuth()
+    const { user } = useAuth()
     const [, fetch] = useCart()
     const axiosSecure = useAxiosSecure()
     // console.log(user?.email)

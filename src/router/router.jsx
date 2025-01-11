@@ -19,6 +19,7 @@ import Home from "../pages/Dashboard/User/Home";
 import AllUser from "../pages/Dashboard/Admin/AllUser";
 import AdminRoute from "./AdminRoute";
 import AddItem from "../pages/Dashboard/Admin/AddItem";
+import ManageItem from "../pages/Dashboard/Admin/ManageItem";
 
 const router = createBrowserRouter([
     {
@@ -94,7 +95,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "add-item",
-                element: <AddItem />,
+                element: <AdminRoute><AddItem /></AdminRoute>
             },
             {
                 path: "all-user",
@@ -102,7 +103,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "manage-item",
-                element: <MyBooking />,
+                element: <AdminRoute><ManageItem /></AdminRoute>,
             },
 
         ],
