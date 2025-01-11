@@ -4,15 +4,13 @@ import useMenu from "../../../hooks/useMenu";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 
 export default function ManageItem() {
-    const [items, loading, refetch] = useMenu()
+    const [items, refetch] = useMenu()
     const axiosSecure = useAxiosSecure()
-    if (loading) {
-        <div>Loading...</div>
-    }
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -28,12 +26,13 @@ export default function ManageItem() {
                 axiosSecure.delete(`/api/menu/${id}`)
                     .then(res => {
                         if (res.data.deletedCount === 1) {
+                            refetch()
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your item has been deleted.",
                                 icon: "success"
                             });
-                            refetch()
+
                         }
                     })
             }
@@ -90,7 +89,7 @@ export default function ManageItem() {
                                     </td>
                                     <td>{item.price}</td>
                                     <th>
-                                        <button onClick={() => handleDelete(item.cartId)} className="btn   text-white border-none hover:bg-[#c9a56b] bg-[#D0A054] text-xl rounded-md"><FaRegEdit /> </button>
+                                        <Link to={`/dashboard/update-item/${item._id}`} className="btn   text-white border-none hover:bg-[#c9a56b] bg-[#D0A054] text-xl rounded-md"><FaRegEdit /> </Link>
                                     </th>
                                     <th>
                                         <button onClick={() => handleDelete(item._id)} className="btn btn-error border-none  text-white bg-red-600 text-xl rounded-md"><RiDeleteBin6Line /> </button>
