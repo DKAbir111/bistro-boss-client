@@ -44,16 +44,16 @@ export default function AllUser() {
         });
     }
 
-    const handleAddAdmin = (id) => {
+    const handleAddAdmin = (id, role) => {
 
         Swal.fire({
-            title: "Are you sure to make admin?",
+            title: `Are you sure to make ${role ? "User" : "admin"}?`,
             text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#D1A054",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, make Admin!"
+            confirmButtonText: `Yes, make ${role ? "User" : "Admin"}!`
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosSecure.patch(`/api/user/${id}`)
@@ -110,7 +110,7 @@ export default function AllUser() {
                                     <td>
                                         {user.email}
                                     </td>
-                                    <td>{user.role ? 'Admin' : <span className="btn text-xl text-white bg-[#D1A054]" onClick={() => handleAddAdmin(user._id)}><FaUserCheck /></span>}</td>
+                                    <td>{user.role === 'admin' ? <span onClick={() => handleAddAdmin(user._id, "user")} title="Make User" className="cursor-pointer">Admin</span> : <span className="btn text-xl text-white bg-[#D1A054]" onClick={() => handleAddAdmin(user._id)}><FaUserCheck /></span>}</td>
                                     <th>
                                         <button onClick={() => handleDelete(user._id, user.name)} className="btn btn-error  text-white bg-red-600 text-xl rounded-md"><RiDeleteBin6Line /> </button>
                                     </th>

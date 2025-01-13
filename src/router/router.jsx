@@ -11,7 +11,6 @@ import PrivateRoute from "./PrivateRoute";
 import DashBoard from "../pages/Dashboard/DashBoard";
 
 import Reservation from "../pages/Dashboard/User/Reservation";
-import Payment from "../pages/Dashboard/User/Payment";
 import MyCart from "../pages/Dashboard/User/MyCart";
 import AddReview from "../pages/Dashboard/User/AddReview";
 import MyBooking from "../pages/Dashboard/User/MyBooking";
@@ -21,6 +20,8 @@ import AdminRoute from "./AdminRoute";
 import AddItem from "../pages/Dashboard/Admin/AddItem";
 import ManageItem from "../pages/Dashboard/Admin/ManageItem";
 import UpdateItem from "../pages/Dashboard/Admin/UpdateItem";
+import Payment from "../pages/Dashboard/User/Payment/Payment";
+
 
 const router = createBrowserRouter([
     {
@@ -68,13 +69,14 @@ const router = createBrowserRouter([
                 path: "reservation",
                 element: <Reservation />,
             },
-            {
-                path: "payment",
-                element: <Payment />,
-            },
+
             {
                 path: "my-cart",
                 element: <MyCart />
+            },
+            {
+                path: "payment",
+                element: <Payment />
             },
             {
                 path: "add-review",

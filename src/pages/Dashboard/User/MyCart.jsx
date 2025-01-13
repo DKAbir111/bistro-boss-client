@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 import SectionTitle from "../../../components/shared/SectionTitle";
+import { Link } from "react-router-dom";
 
 export default function MyCart() {
     const [cart, refetch] = useCart()
@@ -44,7 +45,7 @@ export default function MyCart() {
                 <header className="font-cinzel flex items-center justify-between">
                     <h3 className="text-2xl font-semibold">Total Orders: {cart.length} </h3>
                     <h3 className="text-2xl font-semibold"> Total Price: ${subTotal.toFixed(2)}</h3>
-                    <button className="btn text-lg bg-[#D1A054] text-white">Pay</button>
+                    <Link to={'/dashboard/payment'} className="btn text-lg bg-[#D1A054] text-white">Pay</Link>
                 </header>
 
                 {/* table */}

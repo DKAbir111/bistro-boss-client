@@ -16,16 +16,20 @@ export default function AuthProvider({ children }) {
             if (currentUser) {
                 const userInfo = { email: currentUser?.email }
                 axiosPublic.post('/api/jwt', userInfo)
-                    .then(res => localStorage.setItem('access-token', res.data))
+                    .then(res => {
+                        if (res.data) {
+                            localStorage.setItem('access-token', res.data)
+                            setLoading(false)
+                        }
+                    })
+
             }
             else {
                 localStorage.removeItem('access-token')
+                setLoading(false)
             }
-            setLoading(false)
+
         })
-
-
-
         return () => unsubscribe()
     }, [axiosPublic])
 
