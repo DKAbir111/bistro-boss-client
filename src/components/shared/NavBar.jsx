@@ -3,11 +3,13 @@ import { Link, NavLink } from "react-router-dom"
 import AuthContext from "../../Provider/AuthContext"
 import { IoCartSharp } from "react-icons/io5";
 import useCart from "../../hooks/useCart";
-import useAdmin from "../../hooks/useAdmin";
+// import useAdmin from "../../hooks/useAdmin";
 export default function NavBar() {
     const { user, logoutUser } = useContext(AuthContext)
     const [cart] = useCart()
-    const [isAdmin] = useAdmin()
+    // const [isAdmin] = useAdmin()
+    const isAdmin = false
+    console.log(isAdmin)
     const link = <>
         <li><NavLink to={'/'} className="uppercase" >Home</NavLink></li>
         {user?.email && <li><NavLink to={`${isAdmin ? '/dashboard/admin' : '/dashboard'}`} className="uppercase">Dashboard</NavLink></li>}

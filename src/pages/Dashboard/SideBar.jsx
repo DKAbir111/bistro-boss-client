@@ -61,7 +61,7 @@ export default function SideBar() {
                                     isActive ? "text-white" : "text-black"
                                 }><ImSpoonKnife /> Reservation</NavLink></li>
 
-                                <li><NavLink to={'/dashboard/payment'} className={({ isActive }) =>
+                                <li><NavLink to={'/dashboard/history'} className={({ isActive }) =>
                                     isActive ? "text-white" : "text-black"
                                 }><FaList /> Payment History</NavLink></li>
 

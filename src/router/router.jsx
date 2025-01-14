@@ -21,6 +21,8 @@ import AddItem from "../pages/Dashboard/Admin/AddItem";
 import ManageItem from "../pages/Dashboard/Admin/ManageItem";
 import UpdateItem from "../pages/Dashboard/Admin/UpdateItem";
 import Payment from "../pages/Dashboard/User/Payment/Payment";
+import PaymentHistory from "../pages/Dashboard/User/PaymentHistory";
+
 
 
 const router = createBrowserRouter([
@@ -74,10 +76,7 @@ const router = createBrowserRouter([
                 path: "my-cart",
                 element: <MyCart />
             },
-            {
-                path: "payment",
-                element: <Payment />
-            },
+
             {
                 path: "add-review",
                 element: <AddReview />,
@@ -85,6 +84,14 @@ const router = createBrowserRouter([
             {
                 path: "booking",
                 element: <MyBooking />,
+            },
+            {
+                path: "payment",
+                element: <Payment />,
+            },
+            {
+                path: "history",
+                element: <PaymentHistory />,
             },
 
             // admin route
