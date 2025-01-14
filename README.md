@@ -240,7 +240,7 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 For questions or collaboration, feel free to reach out:
 - **Email**: darun15-14188@diu.edu.bd
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/darunkaras)
+- **LinkedIn**: [My LinkedIn Profile](https://linkedin.com/in/darunkaras)
 
 ---
 
