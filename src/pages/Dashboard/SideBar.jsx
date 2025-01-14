@@ -7,11 +7,7 @@ import useAdmin from "../../hooks/useAdmin";
 
 
 export default function SideBar() {
-
-
     const [isAdmin] = useAdmin()
-
-
     return (
         <div className="drawer lg:drawer-open ">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -24,13 +20,14 @@ export default function SideBar() {
             <div className="drawer-side z-10">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu bg-[#D1A054] text-base-content w-72  min-h-full  p-4 gap-3 font-cinzel">
-                    <Link to={'/dashboard'} className="font-cinzel mb-10">
-                        <h3 className="text-2xl font-bold">BISTRO BOSS</h3>
-                        <p className="tracking-[.5rem] font-semibold">Restaurant</p>
-                    </Link>
+
 
                     {
                         isAdmin ? <>
+                            <Link to={'/dashboard/admin'} className="font-cinzel mb-10">
+                                <h3 className="text-2xl font-bold">BISTRO BOSS</h3>
+                                <p className="tracking-[.5rem] font-semibold">Restaurant</p>
+                            </Link>
                             <li><NavLink to={'/dashboard/admin'} className={({ isActive }) =>
                                 isActive ? "text-white" : "text-black"
                             }><FaHome /> Admin Home</NavLink></li>
@@ -52,8 +49,12 @@ export default function SideBar() {
                             <>
 
                                 {/* user routes */}
+                                <Link to={'/dashboard/user'} className="font-cinzel mb-10">
+                                    <h3 className="text-2xl font-bold">BISTRO BOSS</h3>
+                                    <p className="tracking-[.5rem] font-semibold">Restaurant</p>
+                                </Link>
 
-                                <li><NavLink to={'/dashboard'} className={({ isActive }) =>
+                                <li><NavLink to={'/dashboard/user'} className={({ isActive }) =>
                                     isActive ? "text-white" : "text-black"
                                 }><FaHome /> User Home</NavLink></li>
 

@@ -16,7 +16,7 @@ export default function PaymentHistory() {
     console.log(paymentHistory)
     return (
         <section className="bg-base-200 min-h-screen">
-            <SectionTitle heading={'MANAGE ALL USERS'} subHeading={'How Many?'} />
+            <SectionTitle heading={'PAYMENT HISTORY'} subHeading={'At a Glance!'} />
             <div className="max-w-screen-lg bg-white p-10 mx-auto">
                 <header className="font-cinzel flex items-center justify-between">
                     <h3 className="text-2xl font-semibold">Total Payments: {paymentHistory.length} </h3>

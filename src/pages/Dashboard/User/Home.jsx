@@ -1,10 +1,21 @@
 
 import { FaWallet, FaStore, FaPhone, FaShoppingCart, FaStar, FaCalendarAlt, FaCreditCard } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Home = () => {
     const { user } = useAuth()
+    const axiosSecure = useAxiosSecure()
+    const [stats, setStats] = useState([])
     console.log(user)
+    useEffect(() => {
+        axiosSecure(`/api/user-stats?email=${user?.email}`)
+            .then(res => {
+                setStats(res.data)
+            })
+    }, [])
+    console.log(stats)
     return (
         <div className="p-6 bg-gray-50 min-h-screen flex flex-col  justify-center">
             <h2 className="text-4xl font-bold mb-8 font-cinzel">Hi, Welcome Back!</h2>
@@ -13,7 +24,7 @@ const Home = () => {
             <div className="grid md:grid-cols-3 gap-4 mb-8">
                 <div className="bg-gradient-to-r from-purple-400 to-purple-600 text-white rounded-lg p-4 flex flex-col items-center shadow-md">
                     <FaWallet className="text-3xl mb-2" />
-                    <p className="text-2xl font-bold">205</p>
+                    <p className="text-2xl font-bold">{stats?.totalMenu}</p>
                     <p className="text-sm">Menu</p>
                 </div>
                 <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white rounded-lg p-4 flex flex-col items-center shadow-md">
@@ -43,16 +54,16 @@ const Home = () => {
                     <h3 className="text-2xl font-cinzel font-bold mb-4">Your Activities</h3>
                     <ul className="space-y-2">
                         <li className="flex items-center text-blue-600 text-xl">
-                            <FaShoppingCart className="mr-2" /> Orders: <span className="ml-1 text-black">6</span>
+                            <FaShoppingCart className="mr-2" /> Orders: <span className="ml-1 text-black">{stats?.totalOrder}</span>
                         </li>
                         <li className="flex items-center text-teal-500 text-xl">
-                            <FaStar className="mr-2" /> Reviews: <span className="ml-1 text-black">2</span>
+                            <FaStar className="mr-2" /> Reviews: <span className="ml-1 text-black">{stats?.reviewCount}</span>
                         </li>
                         <li className="flex items-center text-orange-600 text-xl">
-                            <FaCalendarAlt className="mr-2" /> Bookings: <span className="ml-1 text-black">1</span>
+                            <FaCalendarAlt className="mr-2" /> Bookings: <span className="ml-1 text-black">{stats?.bookingCount}</span>
                         </li>
                         <li className="flex items-center text-red-600 text-xl">
-                            <FaCreditCard className="mr-2" /> Payment: <span className="ml-1 text-black">3</span>
+                            <FaCreditCard className="mr-2" /> Payment: <span className="ml-1 text-black">{stats?.paymentCount}</span>
                         </li>
                     </ul>
                 </div>

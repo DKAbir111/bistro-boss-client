@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default function useAxiosPublic() {
     const axiosPublic = axios.create({
-        baseURL: 'http://localhost:5001',
+        baseURL: 'https://bistro-boss-server-phi-two.vercel.app',
     })
 
     return axiosPublic

@@ -8,7 +8,7 @@ export default function useAxiosSecure() {
     const navigate = useNavigate()
     const { logoutUser } = useAuth()
     const axiosSecure = axios.create({
-        baseURL: 'http://localhost:5001',
+        baseURL: 'https://bistro-boss-server-phi-two.vercel.app',
     });
 
     axiosSecure.interceptors.request.use(function (config) {

@@ -11,7 +11,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 export default function Testimonials() {
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        axios.get('http://localhost:5001/api/reviews')
+        axios.get('https://bistro-boss-server-phi-two.vercel.app/api/reviews')
             .then(res => setReviews(res.data))
     }, [])
 

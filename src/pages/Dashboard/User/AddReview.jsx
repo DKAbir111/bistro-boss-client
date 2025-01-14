@@ -1,9 +1,14 @@
 import { FaStar } from "react-icons/fa";
 import { useState } from "react";
 import SectionTitle from "../../../components/shared/SectionTitle";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const AddReview = () => {
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState(5);
+    const { user } = useAuth()
+    const axiosSecure = useAxiosSecure()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -11,10 +16,20 @@ const AddReview = () => {
             rating,
             recipe: e.target.recipe.value,
             suggestion: e.target.suggestion.value,
-            review: e.target.review.value,
+            details: e.target.review.value,
+            email: user?.email,
+            name: user?.name
         };
 
-        console.log("Form Data Submitted:", formData);
+        axiosSecure.post('/api/add-review', formData)
+            .then(res => {
+                if (res.data.insertedId) {
+                    toast.success('Review added successfully')
+                    e.target.reset()
+                }
+            })
+
+
     };
 
     return (
