@@ -39,7 +39,7 @@ export default function PaymentHistory() {
                         </thead>
                         <tbody>
                             {
-                                paymentHistory.map((payment, index) => <tr key={user._id}>
+                                paymentHistory.map((payment, index) => <tr key={payment._id}>
                                     <th>
                                         <label>
                                             {index + 1}

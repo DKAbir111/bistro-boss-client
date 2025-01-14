@@ -1,10 +1,15 @@
 import { ImSpoonKnife } from "react-icons/im";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const BookingForm = () => {
     // Handle form submission
+    const { user } = useAuth()
+    const axiosSecure = useAxiosSecure()
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevent form reload
-        const formData = {
+        const newBooking = {
             date: e.target.date.value,
             time: e.target.time.value,
             guest: e.target.guest.value,
@@ -12,8 +17,15 @@ const BookingForm = () => {
             phone: e.target.phone.value,
             email: e.target.email.value
         };
+        axiosSecure.post('/api/booking', newBooking)
+            .then(res => {
+                if (res.data.insertedId) {
+                    toast.success('Booking saved successfully');
+                    console.log(res.data)
+                    e.target.resut()
+                }
+            })
 
-        console.log("Form Data Submitted:", formData);
     };
 
     return (
@@ -99,6 +111,8 @@ const BookingForm = () => {
                     <input
                         type="email"
                         name="email"
+                        defaultValue={user?.email}
+                        readOnly
                         className="input input-bordered w-full"
                         placeholder="Email"
                     />
