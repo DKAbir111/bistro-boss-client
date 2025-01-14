@@ -14,7 +14,7 @@ export default function CheckoutForm() {
     const [clientSecret, setClientSecret] = useState('');
     const [cart, refetch] = useCart();
     const { user } = useAuth()
-    console.log(cart)
+    // console.log(cart)
     // Calculate the total price from the cart
     const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
@@ -23,7 +23,7 @@ export default function CheckoutForm() {
         const fetchClientSecret = async () => {
             try {
                 const res = await axiosSecure.post('/api/create-payment-intent', { price: totalPrice });
-                console.log(res.data.clientSecret);
+                // console.log(res.data.clientSecret);
                 setClientSecret(res.data.clientSecret);
             } catch (error) {
                 console.error("Error fetching client secret:", error);

@@ -22,7 +22,7 @@ const BookingForm = () => {
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Booking saved successfully');
-                    console.log(res.data)
+                    // console.log(res.data)
                     e.target.resut()
                 }
             })

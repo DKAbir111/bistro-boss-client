@@ -52,7 +52,7 @@ export default function AddItem() {
                     }
                     else {
                         toast.error('Failed to add item')
-                        console.log(res.data)
+                        // console.log(res.data)
                     }
 
                 })

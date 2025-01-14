@@ -37,7 +37,7 @@ export default function MyCart() {
             }
         });
     }
-    console.log(cart)
+    // console.log(cart)
     return (
         <section>
             <SectionTitle heading={'WANNA ADD MORE?'} subHeading={'My Cart'} />
