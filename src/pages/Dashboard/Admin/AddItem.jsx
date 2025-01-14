@@ -62,7 +62,7 @@ export default function AddItem() {
 
     return (
         <section className="font-inter pb-10">
-            <SectionTitle heading={'CONTACT FORM'} subHeading={'Send Us a Message'} />
+            <SectionTitle heading={'Add an Item'} subHeading={'Whats New?'} />
             <div className="max-w-screen-lg  mx-auto bg-base-200">
                 <form className="card-body md:grid grid-cols-2 gap-x-10" onSubmit={handleSubmit(onSubmit)}>
                     {/* price */}

@@ -22,6 +22,8 @@ import ManageItem from "../pages/Dashboard/Admin/ManageItem";
 import UpdateItem from "../pages/Dashboard/Admin/UpdateItem";
 import Payment from "../pages/Dashboard/User/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/User/PaymentHistory";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome";
+import ManageBooking from "../pages/Dashboard/Admin/ManageBooking";
 
 
 
@@ -65,43 +67,43 @@ const router = createBrowserRouter([
             // user route
             {
                 path: "user",
-                element: <Home />
+                element: <PrivateRoute> <Home /></PrivateRoute>
             },
             {
                 path: "reservation",
-                element: <Reservation />,
+                element: <PrivateRoute><Reservation /></PrivateRoute>,
             },
 
             {
                 path: "my-cart",
-                element: <MyCart />
+                element: <PrivateRoute> <MyCart /></PrivateRoute>
             },
 
             {
                 path: "add-review",
-                element: <AddReview />,
+                element: <PrivateRoute> <AddReview /></PrivateRoute>,
             },
             {
                 path: "booking",
-                element: <MyBooking />,
+                element: <PrivateRoute><MyBooking /></PrivateRoute>,
             },
             {
                 path: "payment",
-                element: <Payment />,
+                element: <PrivateRoute><Payment /></PrivateRoute>,
             },
             {
                 path: "history",
-                element: <PaymentHistory />,
+                element: <PrivateRoute><PaymentHistory /></PrivateRoute>,
             },
 
             // admin route
             {
                 path: "admin",
-                element: <MyBooking />
+                element: <AdminHome />
             },
             {
                 path: "manage-booking",
-                element: <MyBooking />,
+                element: <ManageBooking />
             },
             {
                 path: "add-item",

@@ -15,7 +15,8 @@ const BookingForm = () => {
             guest: e.target.guest.value,
             name: e.target.name.value,
             phone: e.target.phone.value,
-            email: e.target.email.value
+            email: e.target.email.value,
+            status: 'Pending',
         };
         axiosSecure.post('/api/booking', newBooking)
             .then(res => {

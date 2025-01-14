@@ -78,9 +78,9 @@ export default function CheckoutForm() {
             console.log('confirm error')
         }
         if (paymentIntent) {
-            console.log('payment intent', paymentIntent);
+            // console.log('payment intent', paymentIntent);
             if (paymentIntent.status === 'succeeded') {
-                console.log('Transaction id:', paymentIntent.id);
+                // console.log('Transaction id:', paymentIntent.id);
                 Swal.fire({
                     title: "Payment Successful!",
                     icon: "success",

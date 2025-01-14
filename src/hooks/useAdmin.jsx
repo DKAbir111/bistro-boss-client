@@ -11,7 +11,7 @@ export default function useAdmin() {
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure.get(`/api/user/admin/${user?.email}`)
-            console.log(res.data.admin)
+            // console.log(res.data.admin)
             return res.data.admin
         }
     })

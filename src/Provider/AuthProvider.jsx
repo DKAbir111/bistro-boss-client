@@ -22,7 +22,6 @@ export default function AuthProvider({ children }) {
                             setLoading(false)
                         }
                     })
-
             }
             else {
                 localStorage.removeItem('access-token')

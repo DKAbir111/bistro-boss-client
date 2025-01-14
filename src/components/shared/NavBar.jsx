@@ -1,15 +1,33 @@
-import { useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
-import AuthContext from "../../Provider/AuthContext"
 import { IoCartSharp } from "react-icons/io5";
 import useCart from "../../hooks/useCart";
-import useAdmin from "../../hooks/useAdmin";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "../../Provider/AuthContext";
+// import useAdmin from "../../hooks/useAdmin";
 export default function NavBar() {
     const { user, logoutUser } = useContext(AuthContext)
+    const axiosSecure = useAxiosSecure()
     const [cart] = useCart()
-    const [isAdmin] = useAdmin()
-    // const isAdmin = false
+    const [isAdmin, setIsAdmin] = useState(false)
+
+    // const [isAdmin] = useAdmin()
+    useEffect(() => {
+        const checkAdminStatus = async () => {
+            try {
+                if (user?.email) {
+                    const res = await axiosSecure.get(`/api/users/admin/${user.email}`);
+                    setIsAdmin(res.data.admin); // Ensure that `res.data` exists
+                }
+            } catch (error) {
+                console.error("Error fetching admin status:", error);
+            }
+        };
+        checkAdminStatus();
+    }, [axiosSecure, user?.email]);
+
     console.log(isAdmin)
+
     const link = <>
         <li><NavLink to={'/'} className="uppercase" >Home</NavLink></li>
         {user?.email && <li><NavLink to={`${isAdmin ? '/dashboard/admin' : '/dashboard/user'}`} className="uppercase">Dashboard</NavLink></li>}

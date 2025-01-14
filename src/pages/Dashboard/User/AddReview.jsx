@@ -18,7 +18,7 @@ const AddReview = () => {
             suggestion: e.target.suggestion.value,
             details: e.target.review.value,
             email: user?.email,
-            name: user?.name
+            name: user?.displayName
         };
 
         axiosSecure.post('/api/add-review', formData)
