@@ -36,7 +36,7 @@ export default function NavBar() {
         <li><NavLink to={'/shop/salad'} className="uppercase">Our shop</NavLink></li>
         {
             user?.email ? <>
-                <li><span className=" btn btn-sm btn-circle mr-4 text-lg bg-green-700 border-none text-white hover:bg-green-700 relative"><IoCartSharp /> <span className="absolute bg-red-600 rounded-full text-sm h-5 w-5 -top-2 -right-2">{cart.length}</span> </span></li>
+                <li><span className="hidden btn btn-sm btn-circle mr-4 text-lg bg-green-700 border-none text-white hover:bg-green-700 relative lg:flex"><IoCartSharp /> <span className="absolute bg-red-600 rounded-full text-sm h-5 w-5 -top-2 -right-2">{cart.length}</span> </span></li>
                 <li> <button className="btn btn-sm uppercase" onClick={logoutUser}>Sign Out</button></li>
             </> :
                 <>
@@ -73,6 +73,7 @@ export default function NavBar() {
                     <h3 className="text-xl font-bold">BISTRO BOSS</h3>
                     <p className="tracking-[.25rem]">Restaurant</p>
                 </Link>
+                <span className="flex ml-7 btn btn-sm btn-circle mr-4 text-lg bg-green-700 border-none text-white hover:bg-green-700 relative lg:hidden"><IoCartSharp /> <span className="absolute bg-red-600 rounded-full text-sm h-5 w-5 -top-2 -right-2">{cart.length}</span> </span>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 flex-nowrap">
