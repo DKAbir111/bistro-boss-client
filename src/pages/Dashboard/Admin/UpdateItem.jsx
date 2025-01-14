@@ -11,6 +11,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 export default function UpdateItem() {
     const navigate = useNavigate()
     const item = useLoaderData()
+    console.log(item)
     const {
         register,
         handleSubmit,

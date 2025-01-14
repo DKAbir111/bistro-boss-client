@@ -26,7 +26,7 @@ export default function NavBar() {
         checkAdminStatus();
     }, [axiosSecure, user?.email]);
 
-    console.log(isAdmin)
+    // console.log(isAdmin)
 
     const link = <>
         <li><NavLink to={'/'} className="uppercase" >Home</NavLink></li>
