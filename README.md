@@ -39,7 +39,7 @@ Whether you run a cozy café or a multi-table fine dining establishment, Bistro 
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="[https://i.ibb.co.com/nsBcVpMN/1.png](https://i.ibb.co.com/nsBcVpMN/1.png)" alt="Landing Page" width="100%" style="border-radius:8px;" />
+      <img src="https://i.ibb.co.com/mCW4Xcr4/landing.png" alt="Landing Page" width="100%" style="border-radius:8px;" />
       <br/><strong>🏠 Landing Page</strong>
     </td>
     <td align="center" width="50%">
