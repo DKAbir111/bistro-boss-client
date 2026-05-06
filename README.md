@@ -1,247 +1,355 @@
-# Bistro✨Boss
+<div align="center">
 
-Bistro Boss is a comprehensive restaurant management platform designed to streamline operations for restaurants of all sizes. Built using the MERN stack (MongoDB, Express.js, React with Vite, and Node.js) along with a suite of modern web technologies, Bistro Boss delivers an intuitive interface to manage reservations, orders, menus, staff, payments, and analytics.
+<img src="https://i.ibb.co.com/nsBcVpMN/1.png" alt="Bistro Boss Banner" width="100%" style="border-radius:12px;" />
 
----
+<br/><br/>
 
-## Features
+# ✨ Bistro Boss
 
-### Core Features:
-- **User Authentication**:
-  - Secure login and registration with JWT-based authentication.
-  - Password hashing using Bcrypt.js.
-  - Role-based access control for Admin, Staff, and Customers.
+### The Complete Restaurant Management Platform
 
-- **Reservation Management**:
-  - Real-time reservation management with time slots, customer details, and table assignments.
-  - Real-time updates for better coordination.
+**Reservations · Orders · Menu · Staff · Payments · Analytics — all in one place.**
 
-- **Order Management**:
-  - Efficient order tracking and management with status updates (new, preparing, ready for pickup/delivery).
+<br/>
 
-- **Menu Management**:
-  - Dynamic menu updates, including adding, editing, and removing items.
-  - Integration with Cloudinary for rich image uploads.
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Demo-Visit%20Site-22c55e?style=for-the-badge)](https://bistroboss-c5b6e.web.app/)
+[![Server](https://img.shields.io/badge/🚀%20Live%20Server-API-6366f1?style=for-the-badge)](https://bistro-boss-server-phi-two.vercel.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+[![MERN Stack](https://img.shields.io/badge/Stack-MERN-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)](CONTRIBUTING.md)
 
-- **Staff Management**:
-  - Manage roles, schedules, and track staff performance metrics.
+<br/>
 
-- **Admin Dashboard**:
-  - Centralized dashboard for owners to monitor reservations, orders, payments, and staff activities.
+[🌐 Live Demo](https://bistroboss-c5b6e.web.app/) · [🐛 Report Bug](../../issues) · [✨ Request Feature](../../issues) · [🤝 Contribute](#contributing)
 
-- **Email Notifications**:
-  - Automated emails for reservations, order updates, payment receipts, and promotional offers using Nodemailer.
-
-- **Payment Integration**:
-  - Secure online payments with Stripe, supporting refunds and invoices.
-
-- **Customer Management**:
-  - Maintain detailed customer profiles, including order history and favorite menu items.
-
-- **Analytics Dashboard**:
-  - Visualize key metrics like sales, orders, and staff performance using Chart.js or Recharts.
-
-- **Real-Time Order Tracking**:
-  - Customers and staff receive live order updates through Socket.IO.
-
-- **Multi-Language Support**:
-  - Localized interfaces with libraries like `react-i18next`.
-
-- **Mobile-First Design**:
-  - Fully responsive design for optimal performance on mobile devices.
+</div>
 
 ---
 
-## Tools & Technology
+## 🍽️ What is Bistro Boss?
 
-### Frontend:
-- React, Vite
-- Redux
-- React Router
-- Axios
-- Tailwind CSS, DaisyUI
-- React Toastify
-- React Hook Form, Formik
-- TanStack Query
-- Framer Motion
-- Custom React Hooks
-- React Icons
+**Bistro Boss** is a full-featured, production-ready restaurant management system built on the **MERN stack**. It empowers restaurant owners with a centralized platform to handle every operational aspect — from customer reservations to real-time order tracking, staff management, and detailed analytics — all wrapped in a beautiful, responsive UI.
 
-### Backend:
-- Node.js, Express.js
-- MongoDB, Mongoose
-- JWT Authentication
-- Nodemailer
-- Bcrypt.js
-- Stripe for payment processing
-- Socket.IO for real-time updates
-- Cloudinary for image storage
-- Multer for file uploads
-- Redis for caching
-
-### Design Tools:
-- Figma
-- Adobe XD
-- Sketch
-
-### Hosting:
-- Frontend: Netlify, Vercel, Firebase Hosting
-- Backend: Heroku, Vercel, AWS S3
+Whether you run a cozy café or a multi-table fine dining establishment, Bistro Boss scales with your needs.
 
 ---
 
-## Live Links
+## 📸 Screenshots
 
-- **Live Website**: [Bistro Boss Website](https://bistroboss-c5b6e.web.app/)
-- **Live Server**: [Bistro Boss Server](https://bistro-boss-server-phi-two.vercel.app/)
-
----
-
-## Installation and Setup
-
-To get started with Bistro Boss, follow the instructions below.
-
-### Prerequisites:
-- Node.js (v16 or above)
-- MongoDB (local or cloud instance)
-- A modern web browser
-
-### Backend Setup:
-
-1. Clone the server repository:
-   ```bash
-   git clone <server-repo-url>
-   cd server
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Set up environment variables:
-   Create a `.env` file in the root directory and add the following:
-   ```env
-   PORT=5000
-   MONGO_URI=<your-mongo-db-uri>
-   JWT_SECRET=<your-jwt-secret>
-   STRIPE_SECRET_KEY=<your-stripe-secret-key>
-   CLOUDINARY_CLOUD_NAME=<your-cloud-name>
-   CLOUDINARY_API_KEY=<your-api-key>
-   CLOUDINARY_API_SECRET=<your-api-secret>
-   ```
-
-4. Start the server:
-   ```bash
-   npm start
-   ```
-
-5. The backend will be accessible at `http://localhost:5000`.
-
-### Frontend Setup:
-
-1. Clone the client repository:
-   ```bash
-   git clone <client-repo-url>
-   cd client
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Set up environment variables:
-   Create a `.env` file in the root directory and add the following:
-   ```env
-   VITE_API_URL=http://localhost:5000
-   ```
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-5. The frontend will be accessible at `http://localhost:5173`.
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://i.ibb.co.com/nsBcVpMN/1.png" alt="Landing Page" width="100%" style="border-radius:8px;" />
+      <br/><strong>🏠 Landing Page</strong>
+    </td>
+    <td align="center" width="50%">
+      <img src="https://i.ibb.co.com/JWPnhkFW/2.png" alt="Menu & Ordering" width="100%" style="border-radius:8px;" />
+      <br/><strong>🍕 Menu & Ordering</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="https://i.ibb.co.com/WvZKnJb2/3.png" alt="Customer Dashboard" width="100%" style="border-radius:8px;" />
+      <br/><strong>👤 Customer Dashboard</strong>
+    </td>
+    <td align="center" width="50%">
+      <img src="https://i.ibb.co.com/5gm7VY6n/admin.png" alt="Admin Panel" width="100%" style="border-radius:8px;" />
+      <br/><strong>⚙️ Admin Control Panel</strong>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## Features Overview
+## ⚡ Features
 
-### User Interface
-- **Landing Page**:
-  - Engaging design to attract customers.
-  - Dynamic content showcasing the latest offers and menu items.
+### 🔐 Authentication & Access Control
+- Secure JWT-based login and registration
+- Password hashing with **Bcrypt.js**
+- Role-based access for **Admin**, **Staff**, and **Customers**
+- Protected routes per user role
 
-- **Reservation System**:
-  - Seamlessly book reservations with available time slots.
+### 📅 Reservation Management
+- Real-time table reservation with time slots and customer details
+- Instant updates for better front-of-house coordination
+- Admin view of all bookings with status control
 
-- **Order Management**:
-  - Interactive UI for tracking order status in real-time.
+### 🧾 Order Management
+- Full order lifecycle: **New → Preparing → Ready → Delivered**
+- Real-time order status updates via **Socket.IO**
+- Order history per customer with itemized details
 
-- **Admin Panel**:
-  - Centralized control for managing the restaurant's operations.
+### 🍔 Menu Management
+- Dynamic add, edit, and remove menu items
+- Rich image uploads via **Cloudinary**
+- Category-based menu organization
+- Live preview of menu changes
 
-### Backend Functionality
-- **APIs**:
-  - RESTful endpoints for reservations, orders, menus, and staff management.
+### 👨‍🍳 Staff Management
+- Manage roles, shifts, and schedules
+- Track staff performance metrics
+- Role-based dashboard access
 
-- **Security**:
-  - Role-based access control.
-  - Encrypted user data.
+### 💳 Payments
+- Secure online payments powered by **Stripe**
+- Refund handling and invoice generation
+- Full payment history per order
 
-- **Performance Optimization**:
-  - Redis caching for frequently accessed data.
-  - Efficient query optimization with Mongoose.
+### 📧 Email Notifications
+- Automated emails for reservations, order updates, payment receipts, and promotions via **Nodemailer**
 
-### Real-Time Features
-- **Socket.IO**:
-  - Real-time order tracking and status updates.
+### 📊 Analytics Dashboard
+- Visual sales, order, and staff performance charts via **Chart.js / Recharts**
+- Revenue tracking and trend analysis
+- Exportable reports for decision-making
 
-- **Push Notifications**:
-  - Notify customers about order updates and promotional offers.
+### 🌐 Multi-Language Support
+- Localized UI with **react-i18next**
+- Easily extensible for additional languages
 
----
-
-## Landing Page Structure
-
-Below is the layout of the landing page:
-
-![Landing Page Structure](./landing-structure.png)
-
-Admin Dashboard
-
-![Admin Dashboard](./Admin.png)
-
-User Dashboard
-
-![Admin Dashboard](./User.png)
-
----
-
-## Contributing
-
-Contributions are welcome! To contribute:
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/new-feature`).
-3. Commit your changes (`git commit -m 'Add a new feature'`).
-4. Push to the branch (`git push origin feature/new-feature`).
-5. Open a pull request.
+### 📱 Mobile-First Design
+- Fully responsive across all screen sizes
+- Optimized for touch interactions and small viewports
 
 ---
 
-## License
+## 🛠️ Tech Stack
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+### Frontend
+| Technology | Purpose |
+|---|---|
+| React + Vite | UI framework with fast HMR |
+| Redux | Global state management |
+| React Router | Client-side routing |
+| TanStack Query | Server state & data fetching |
+| Axios | HTTP requests |
+| Tailwind CSS + DaisyUI | Styling & component library |
+| Framer Motion | Animations & transitions |
+| React Hook Form + Formik | Form handling & validation |
+| Socket.IO Client | Real-time communication |
+| React Toastify | Toast notifications |
+| React Icons | Icon library |
+
+### Backend
+| Technology | Purpose |
+|---|---|
+| Node.js + Express.js | Server & REST API |
+| MongoDB + Mongoose | Database & ODM |
+| JWT | Authentication tokens |
+| Bcrypt.js | Password hashing |
+| Stripe | Payment processing |
+| Socket.IO | Real-time order updates |
+| Cloudinary + Multer | Image storage & file uploads |
+| Nodemailer | Email notifications |
+| Redis | Caching & performance |
+
+### Hosting & DevOps
+| Layer | Platform |
+|---|---|
+| Frontend | Vercel / Netlify / Firebase |
+| Backend | Vercel / Heroku / AWS |
+| Database | MongoDB Atlas |
+| Media | Cloudinary |
 
 ---
 
-## Contact
+## 🚀 Getting Started
 
-For questions or collaboration, feel free to reach out:
-- **Email**: darun15-14188@diu.edu.bd
-- **LinkedIn**: [My LinkedIn Profile](https://linkedin.com/in/darunkaras)
+### Prerequisites
+
+```bash
+Node.js >= 16.x
+MongoDB (local or Atlas cloud)
+A modern web browser
+```
+
+### 1. Clone the Repository
+
+```bash
+# Clone client
+git clone <client-repo-url>
+cd client
+
+# Clone server (separate repo)
+git clone <server-repo-url>
+cd server
+```
+
+### 2. Backend Setup
+
+```bash
+cd server
+npm install
+```
+
+Create a `.env` file in `/server`:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_email_app_password
+```
+
+Start the server:
+
+```bash
+npm start
+# Server runs at http://localhost:5000
+```
+
+### 3. Frontend Setup
+
+```bash
+cd client
+npm install
+```
+
+Create a `.env` file in `/client`:
+
+```env
+VITE_API_URL=http://localhost:5000
+VITE_STRIPE_PUBLIC_KEY=your_stripe_publishable_key
+```
+
+Start the dev server:
+
+```bash
+npm run dev
+# Frontend runs at http://localhost:5173
+```
 
 ---
 
-Thank you for exploring Bistro Boss! Bon appétit! 🍽
+## 📂 Project Structure
+
+```
+bistro-boss/
+│
+├── client/                         # React frontend (Vite)
+│   ├── src/
+│   │   ├── components/             # Reusable UI components
+│   │   ├── pages/                  # Route-level pages
+│   │   │   ├── Home/               # Landing page sections
+│   │   │   ├── Menu/               # Menu browsing & ordering
+│   │   │   ├── Dashboard/          # Admin & user dashboards
+│   │   │   └── Auth/               # Login & registration
+│   │   ├── hooks/                  # Custom React hooks
+│   │   ├── store/                  # Redux store & slices
+│   │   ├── utils/                  # Helper functions
+│   │   └── locales/                # i18n translation files
+│   └── ...
+│
+├── server/                         # Node.js + Express backend
+│   ├── src/
+│   │   ├── routes/                 # API route definitions
+│   │   ├── controllers/            # Route handler logic
+│   │   ├── models/                 # Mongoose schemas
+│   │   ├── middleware/             # Auth, error, upload middleware
+│   │   ├── services/               # Business logic layer
+│   │   └── utils/                  # Email, token helpers
+│   └── ...
+│
+└── README.md
+```
+
+---
+
+## 🔌 API Overview
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/auth/register` | Register a new user |
+| `POST` | `/api/auth/login` | Login and receive JWT |
+| `GET` | `/api/menu` | Fetch all menu items |
+| `POST` | `/api/orders` | Place a new order |
+| `GET` | `/api/orders/:id` | Get order status |
+| `POST` | `/api/reservations` | Book a table |
+| `GET` | `/api/admin/dashboard` | Admin stats (protected) |
+| `POST` | `/api/payments/checkout` | Initiate Stripe payment |
+
+> Full API documentation available at `/api/docs` when running locally.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome from developers of all skill levels!
+
+**Steps to contribute:**
+
+```bash
+# 1. Fork this repository
+# 2. Create your feature branch
+git checkout -b feature/your-amazing-feature
+
+# 3. Commit your changes
+git commit -m "feat: add your amazing feature"
+
+# 4. Push to your branch
+git push origin feature/your-amazing-feature
+
+# 5. Open a Pull Request against main
+```
+
+**Areas to contribute:**
+- 🌐 New language translations (`/locales`)
+- 🐛 Bug fixes — check issues labeled `good first issue`
+- 📱 Mobile UI improvements
+- 📊 New analytics charts and reports
+- 🧪 Unit and integration test coverage
+- 📖 Documentation improvements
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a PR.
+
+---
+
+## 🗺️ Roadmap
+
+- [x] JWT Authentication & role-based access
+- [x] Menu management with Cloudinary
+- [x] Real-time orders with Socket.IO
+- [x] Stripe payment integration
+- [x] Email notifications
+- [x] Admin analytics dashboard
+- [x] Multi-language support
+- [ ] Mobile app (React Native)
+- [ ] Table QR code ordering
+- [ ] Kitchen display system (KDS)
+- [ ] Loyalty points & rewards
+- [ ] WhatsApp order notifications
+- [ ] POS integration
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+Free to use, modify, and distribute with attribution.
+
+---
+
+## 📬 Contact
+
+Have questions or want to collaborate?
+
+- 📧 **Email**: [darun15-14188@diu.edu.bd](mailto:darun15-14188@diu.edu.bd)
+- 💼 **LinkedIn**: [linkedin.com/in/darunkaras](https://linkedin.com/in/darunkaras)
+- 🐛 **Issues**: [GitHub Issues](../../issues)
+
+---
+
+<div align="center">
+
+**Built with ❤️ for the restaurant industry**
+
+⭐ **Star this repo** if Bistro Boss helped or inspired you!
+
+*Bon appétit!* 🍽️
+
+</div>
