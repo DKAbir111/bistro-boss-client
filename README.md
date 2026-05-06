@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://i.ibb.co/nsBcVpMN/1.png" alt="Bistro Boss Banner" width="100%" style="border-radius:12px;" />
+![Bistro Boss Banner](https://i.ibb.co/nsBcVpMN/1.png)
 
 <br/><br/>
 
