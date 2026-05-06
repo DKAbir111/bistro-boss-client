@@ -4,8 +4,8 @@
 <img src="https://i.ibb.co.com/mCW4Xcr4/landing.png" alt="Bistro Boss Banner" width="100%" style="border-radius:12px;" />
 
 <br/><br/>
-
-# ✨ Bistro Boss
+re
+# ✨ Bistro Boss - Restaurant Management Platform
 
 ### The Complete Restaurant Management Platform
 
